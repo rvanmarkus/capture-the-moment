@@ -6,9 +6,41 @@ angular.module('moments').controller('MomentsController', ['$scope', '$statePara
         $scope.authentication = Authentication;
 
       $scope.startStreamingMicrophone = function() {
+        var client = new BinaryClient('ws://localhost:9001');
+        client.on('open', function(){
+          $scope.stream = client.createStream();
+        });
+
+        var session = {
+          audio: true,
+          video: false
+        };
+
+        var onAudio = function(e) {
+          if(!$scope.stream  || !$scope.stream.writable)
+            return;
+
+          var left = e.inputBuffer.getChannelData(0);
+
+          $scope.stream .write(convertFloat32ToInt16(left));
+        };
+
+
         getUserMedia({
           audio: true
         }).then(function(stream) {
+          var audioInput = audioContext.createMediaStreamSource(stream);
+          var bufferSize = 2048;
+
+          var recorder = audioContext.createScriptProcessor(bufferSize, 1, 1);
+
+          recorder.onaudioprocess = onAudio;
+
+          audioInput.connect(recorder);
+
+          recorder.connect(audioContext.destination);
+
+
           // mic in
           var source = audioContext.createMediaStreamSource(stream);
           var filter = audioContext.createBiquadFilter();
@@ -66,7 +98,10 @@ angular.module('moments').controller('MomentsController', ['$scope', '$statePara
             }
         };
 
-        // Update existing Moment
+
+
+
+      // Update existing Moment
         $scope.update = function() {
             var moment = $scope.moment;
 
@@ -88,6 +123,5 @@ angular.module('moments').controller('MomentsController', ['$scope', '$statePara
                 momentId: $stateParams.momentId
             });
         };
-
     }
 ]);
