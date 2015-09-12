@@ -11,11 +11,6 @@ angular.module('moments').controller('MomentsController', ['$scope', '$statePara
           $scope.stream = client.createStream();
         });
 
-        var session = {
-          audio: true,
-          video: false
-        };
-
         var onAudio = function(e) {
           if(!$scope.stream  || !$scope.stream.writable)
             return;
@@ -39,7 +34,6 @@ angular.module('moments').controller('MomentsController', ['$scope', '$statePara
           audioInput.connect(recorder);
 
           recorder.connect(audioContext.destination);
-
 
           // mic in
           var source = audioContext.createMediaStreamSource(stream);
