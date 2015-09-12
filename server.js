@@ -47,15 +47,17 @@ server.on('connection', function(client) {
     stream.pipe(writer);
     writer.pipe(matchProccess.stdin);
 
-    matchProccess.stderr.on('data', function(e){
-      console.log(e.toString("utf-8"));
-    });
-    matchProccess.stdout.on('data', function(e){
-      console.log(e.toString("utf-8"));
-    });
-
     stream.on('end', function() {
-      //fileWriter.end();
+      matchProccess.kill();
+      console.log('matching proccess stopped');
     });
+  });
+
+  matchProccess.stderr.on('data', function(e){
+    console.log(e.toString("utf-8"));
+  });
+  matchProccess.stdout.on('data', function(e){
+
+    console.log(e.toString("utf-8"));
   });
 });

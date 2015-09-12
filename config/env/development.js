@@ -3,16 +3,16 @@
 module.exports = {
 	db: 'mongodb://localhost/ctm-dev',
 	app: {
-		title: 'ctm - Development Environment'
+		title: 'eMoment'
 	},
 	facebook: {
-		clientID: process.env.FACEBOOK_ID || 'APP_ID',
-		clientSecret: process.env.FACEBOOK_SECRET || 'APP_SECRET',
+		clientID: process.env.FACEBOOK_ID || '1712352332319955',
+		clientSecret: process.env.FACEBOOK_SECRET || '0ca9722e2ecc5049c92a68c88143c82a',
 		callbackURL: 'http://localhost:3000/auth/facebook/callback'
 	},
 	twitter: {
-		clientID: process.env.TWITTER_KEY || 'CONSUMER_KEY',
-		clientSecret: process.env.TWITTER_SECRET || 'CONSUMER_SECRET',
+		clientID: process.env.TWITTER_KEY || 'BNTjGDeerfIVgKlFbDvp5huJO',
+		clientSecret: process.env.TWITTER_SECRET || '5A4jNQvyev6ZkYNCqiJMB8EdgBKR8PuRyAd2rZnchUSnrmnxnC',
 		callbackURL: 'http://localhost:3000/auth/twitter/callback'
 	},
 	google: {

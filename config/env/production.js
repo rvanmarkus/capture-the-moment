@@ -10,11 +10,11 @@ module.exports = {
 			],
 			js: [
 				'public/lib/angular/angular.min.js',
-				'public/lib/angular-resource/angular-resource.min.js', 
-				'public/lib/angular-cookies/angular-cookies.min.js',  
-				'public/lib/angular-animate/angular-animate.min.js', 
-				'public/lib/angular-touch/angular-touch.min.js', 
-				'public/lib/angular-sanitize/angular-sanitize.min.js', 
+				'public/lib/angular-resource/angular-resource.min.js',
+				'public/lib/angular-cookies/angular-cookies.min.js',
+				'public/lib/angular-animate/angular-animate.min.js',
+				'public/lib/angular-touch/angular-touch.min.js',
+				'public/lib/angular-sanitize/angular-sanitize.min.js',
 				'public/lib/angular-ui-router/release/angular-ui-router.min.js',
 				'public/lib/angular-ui-utils/ui-utils.min.js',
 				'public/lib/angular-bootstrap/ui-bootstrap-tpls.min.js'
@@ -24,8 +24,8 @@ module.exports = {
 		js: 'public/dist/application.min.js'
 	},
 	facebook: {
-		clientID: process.env.FACEBOOK_ID || 'APP_ID',
-		clientSecret: process.env.FACEBOOK_SECRET || 'APP_SECRET',
+		clientID: process.env.FACEBOOK_ID || '1712352332319955',
+		clientSecret: process.env.FACEBOOK_SECRET || '0ca9722e2ecc5049c92a68c88143c82a',
 		callbackURL: 'http://localhost:3000/auth/facebook/callback'
 	},
 	twitter: {
