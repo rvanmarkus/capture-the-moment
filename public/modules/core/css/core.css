@@ -1,5 +1,6 @@
 .content {
 	margin-top: 50px;
+  font-family: "Helvetica Neue Light", "Lucida Grande", "Calibri", "Arial", sans-serif;
 }
 .undecorated-link:hover {
 	text-decoration: none;
@@ -7,3 +8,22 @@
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
 	display: none !important;
 }
+@font-face {
+  font-family: LS;
+  src: url("LSREGULAR.OTF") format("opentype");
+}
+
+@font-face {
+  font-family: LS;
+  font-weight: bold;
+  src: url("LSBOLD.OTF") format("opentype");
+}
+@font-face {
+  font-family: LS;
+  font-weight: 100;
+  src: url("LSLIGHT.OTF") format("opentype");
+}
+
+LSREGULAR.OTF
+LSBOLD.OTF
+LSLIGHT.OTF
