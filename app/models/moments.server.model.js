@@ -16,6 +16,7 @@ var MomentSchema = new Schema({
 		required: 'Please fill Moment name',
 		trim: true
 	},
+  comments: [{ body: String, date: Date, user: {type: Schema.ObjectId, ref: 'User'} }],
 	created: {
 		type: Date,
 		default: Date.now
@@ -23,7 +24,11 @@ var MomentSchema = new Schema({
 	user: {
 		type: Schema.ObjectId,
 		ref: 'User'
-	}
+	},
+  meta: {
+    votes: Number,
+    favs:  Number
+  }
 });
 
 mongoose.model('Moment', MomentSchema);

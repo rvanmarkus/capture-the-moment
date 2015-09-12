@@ -1,9 +1,35 @@
 'use strict';
 
 // Moments controller
-angular.module('moments').controller('MomentsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Moments',
-    function($scope, $stateParams, $location, Authentication, Moments) {
+angular.module('moments').controller('MomentsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Moments', 'audioContext','getUserMedia',
+    function($scope, $stateParams, $location, Authentication, Moments, audioContext, getUserMedia) {
         $scope.authentication = Authentication;
+
+      $scope.startStreamingMicrophone = function() {
+        getUserMedia({
+          audio: true
+        }).then(function(stream) {
+          // mic in
+          var source = audioContext.createMediaStreamSource(stream);
+          var filter = audioContext.createBiquadFilter();
+          filter.frequency.value = 200;
+          filter.type = 'highpass';
+
+          var gain = audioContext.createGain();
+          gain.gain.value = 0;
+
+          source.connect(filter);
+          filter.connect(gain);
+          gain.connect(audioContext.destination);
+
+          $scope.hz = filter.frequency;
+          $scope.gain = gain.gain;
+          $scope.$apply();
+        }, function(err) {
+          console.log(err)
+        });
+      }
+
 
         // Create new Moment
         $scope.create = function() {
@@ -62,5 +88,6 @@ angular.module('moments').controller('MomentsController', ['$scope', '$statePara
                 momentId: $stateParams.momentId
             });
         };
+
     }
 ]);
