@@ -1,6 +1,8 @@
+body {
+  font-family: "LS", "Helvetica", serif, "Helvetica Neue Light", "Lucida Grande", "Calibri", "Arial", sans-serif;;
+}
 .content {
 	margin-top: 50px;
-  font-family: "Helvetica Neue Light", "Lucida Grande", "Calibri", "Arial", sans-serif;
 }
 .undecorated-link:hover {
 	text-decoration: none;
@@ -9,21 +11,44 @@
 	display: none !important;
 }
 @font-face {
-  font-family: LS;
+  font-family: LS, "Helvetica";
   src: url("LSREGULAR.OTF") format("opentype");
 }
 
 @font-face {
-  font-family: LS;
+  font-family: LS, "Helvetica";
   font-weight: bold;
   src: url("LSBOLD.OTF") format("opentype");
 }
 @font-face {
-  font-family: LS;
+  font-family: LS, "Helvetica";
   font-weight: 100;
   src: url("LSLIGHT.OTF") format("opentype");
 }
+.navbar-nav > li > a,
+.navbar-brand{
+  transition: all .6s;
+  color: #fff;
+  font-family: "Helvetica Neue Light", "Lucida Grande", "Calibri", "Arial", sans-serif;
+}
+.nav > li > a:hover{
+  background: #ea2d2d;
 
-LSREGULAR.OTF
-LSBOLD.OTF
-LSLIGHT.OTF
+}
+
+.navbar-header >a:hover{
+  color:#fff;
+}
+
+.navbar-toggle .icon-bar {
+  background-color:#fff;
+}
+.navbar-toggle {
+  color:#fff;
+}
+.navbar{
+  background-color: #f2302c;
+  border:0;
+  border-top:10px solid #ea2d2d;
+  box-shadow: 0 -2px 10px rgba(0,0,0,.6);
+}
