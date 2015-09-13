@@ -63,7 +63,7 @@
 		$mdThemingProvider
 			.theme(defaultPalette)
 			.primaryPalette(defaultPalette, {
-				'default' : '800',
+				'default' : 'A700',
 				'hue-1' : '400'
 			})
 			.accentPalette('blue')
