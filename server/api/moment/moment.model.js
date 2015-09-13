@@ -22,7 +22,8 @@ var createdModifiedPlugin = require('mongoose-createdmodified').createdModifiedP
 var MomentDefinition = {
 	name: {type: String, required: true},
 	info: String,
-	active: Boolean
+	active: Boolean,
+
 };
 
 /**

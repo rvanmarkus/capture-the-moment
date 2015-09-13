@@ -73,7 +73,7 @@
 		 * @returns {promise}
 		 */
 		function transitionTo(answer) {
-			return $state.transitionTo('moment.list');
+			return $state.transitionTo('moment.create');
 		}
 
 		/**
