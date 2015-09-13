@@ -12,7 +12,11 @@
 	angular
 		.module('captureTheMomentApp')
 		.controller('AppController', AppController);
-
+		.config(function($mdThemingProvider) {
+		  $mdThemingProvider.theme('default')
+		    .primaryPalette('deep-orange')
+		    .accentPalette('blue');
+		});
 	/**
 	 * @ngdoc function
 	 * @name captureTheMomentApp.provider:AppController
