@@ -12,7 +12,7 @@
 	height:320px;
 	border-radius:100%;
 	background:#FF3D00;
-	padding:20px
+	padding:20px;
 }
 
 .magic-button {
@@ -20,5 +20,14 @@
 	width:280px;
 	height:280px;
 	border-radius:100% !important;
-	background:#DD2C00
+	background:#DD2C00;
+}
+
+h2 {
+	text-align: center;
+	width: 100%;
+}
+
+md-content.md-deep-orange-theme {
+	background: #FFF;
 }
