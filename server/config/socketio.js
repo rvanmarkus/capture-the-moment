@@ -28,6 +28,7 @@ function onConnect(socket) {
 	});
 
 	// Insert sockets below
+	require('../api/moment/moment.socket').register(socket);
 	require('../api/user/user.socket').register(socket);
 }
 
