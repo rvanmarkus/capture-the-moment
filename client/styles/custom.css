@@ -1,14 +1,3 @@
-md-button, md-button:hover, md-button:active {
-	border-radius: 100% !important;
-}
-
-button.magic-button.md-button.md-deep-orange-theme, 
-button.magic-button.md-button.md-deep-orange-theme:hover, 
-button.magic-button.md-button.md-deep-orange-theme:focus,
-button.magic-button.md-button.md-deep-orange-theme:active {
-	border-radius: 100% !important;
-}
-
 .outer-ring {
 	width:350px;
 	height:350px;
