@@ -73,7 +73,7 @@
 		 * @returns {promise}
 		 */
 		function transitionTo(answer) {
-			return $state.transitionTo('moment.create');
+			return $state.transitionTo('moment.list.create');
 		}
 
 		/**
@@ -83,6 +83,7 @@
 		function onStateChange() {
 			unregisterListener();
 			$mdDialog.hide();
+
 		}
 	}
 
