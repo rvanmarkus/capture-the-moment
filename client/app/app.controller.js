@@ -12,7 +12,6 @@
 	angular
 		.module('captureTheMomentApp')
 		.controller('AppController', AppController);
-
 	/**
 	 * @ngdoc function
 	 * @name captureTheMomentApp.provider:AppController

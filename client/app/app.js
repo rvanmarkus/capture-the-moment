@@ -52,7 +52,7 @@
 
 
 		// set the default palette name
-		var defaultPalette = 'blue';
+		var defaultPalette = 'deep-orange';
 		// define a palette to darken the background of components
 		var greyBackgroundMap = $mdThemingProvider.extendPalette(defaultPalette, {'A100': 'fafafa'});
 
@@ -62,8 +62,11 @@
 		// customize the theme
 		$mdThemingProvider
 			.theme(defaultPalette)
-			.primaryPalette(defaultPalette)
-			.accentPalette('pink')
+			.primaryPalette(defaultPalette, {
+				'default' : '800',
+				'hue-1' : '400'
+			})
+			.accentPalette('blue')
 			.backgroundPalette('grey-background');
 
 		var spritePath = 'bower_components/material-design-icons/sprites/svg-sprite/';
