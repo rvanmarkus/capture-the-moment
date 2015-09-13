@@ -63,7 +63,7 @@
 			controllerAs: 'create',
 			templateUrl: 'app/moments/create/create.html',
 			clickOutsideToClose: false
-		}).then(transitionTo, transitionTo);
+		});
 
 		/**
 		 * Function executed when resolving or rejecting the

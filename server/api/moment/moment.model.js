@@ -20,10 +20,30 @@ var createdModifiedPlugin = require('mongoose-createdmodified').createdModifiedP
  * @property {Boolean} active - Flag indicating this moment is active
  */
 var MomentDefinition = {
-	name: {type: String, required: true},
-	info: String,
-	active: Boolean,
+	name: { type: String, index: true },
 
+	mediaref: {
+		type: String,
+		required: true
+	},
+	mediadate: {
+		type: Date
+	},
+	created: {
+		type: Date,
+		default: Date.now
+	},
+	user: {
+		type: mongoose.Schema.Types.ObjectId,
+		ref: 'User'
+	},
+	meta: {
+		votes: Number,
+		favs:  Number
+	},
+	hashtags: {
+		type: mongoose.Schema.Types.Mixed
+	}
 };
 
 /**

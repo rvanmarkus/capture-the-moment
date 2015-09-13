@@ -50,7 +50,8 @@
 		vm.create = createMoment;
 		vm.close = hideDialog;
 		vm.cancel = cancelDialog;
-
+		vm.hashtags = [];
+		vm.readonly = false;
 		/**
 		 * @ngdoc function
 		 * @name createMoment
@@ -63,6 +64,7 @@
 		function createMoment(form) {
 			// refuse to work with invalid data
 			if (vm.moment._id || (form && !form.$valid)) {
+				form.prefentDefault();
 				return;
 			}
 
