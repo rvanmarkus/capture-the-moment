@@ -16,8 +16,9 @@
 	 * @param {$scope} $scope - The scope to listen for events
 	 * @param {socket.io} socket - The socket to register updates
 	 */
-	function MomentController() {
-		// var vm = this;
+	function MomentController($scope, socket, getUserMedia, audioContext) {
+		var vm = this;
+
 	}
 
 })();

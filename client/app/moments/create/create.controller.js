@@ -114,5 +114,56 @@
 		function cancelDialog() {
 			$mdDialog.cancel();
 		}
+
+		vm.startStreamingMicrophone = function() {
+			var client = new BinaryClient('ws://localhost:9001');
+			client.on('open', function(){
+				var stream = client.createStream();
+			});
+
+			var onAudio = function(e) {
+				if(!stream  || !this.stream.writable)
+					return;
+
+				var left = e.inputBuffer.getChannelData(0);
+
+				vm.stream.write(convertFloat32ToInt16(left));
+			};
+
+
+			getUserMedia({
+				audio: true
+			}).then(function(stream) {
+				var audioInput = audioContext.createMediaStreamSource(stream);
+				var bufferSize = 2048;
+
+				var recorder = audioContext.createScriptProcessor(bufferSize, 1, 1);
+
+				recorder.onaudioprocess = onAudio;
+
+				audioInput.connect(recorder);
+
+				recorder.connect(audioContext.destination);
+
+				// mic in
+				var source = audioContext.createMediaStreamSource(stream);
+				var filter = audioContext.createBiquadFilter();
+				filter.frequency.value = 200;
+				filter.type = 'highpass';
+
+				var gain = audioContext.createGain();
+				gain.gain.value = 0;
+
+				source.connect(filter);
+				filter.connect(gain);
+				gain.connect(audioContext.destination);
+
+				vm.hz = filter.frequency;
+				vm.gain = gain.gain;
+				$scope.$apply();
+			}, function(err) {
+				console.log(err)
+			});
+		}
 	}
 })();
