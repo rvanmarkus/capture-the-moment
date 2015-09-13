@@ -121,7 +121,7 @@ md-sidenav[md-component-id="mainMenu"] md-content ul > li > ul > li > .md-button
 }
 md-sidenav[md-component-id="mainMenu"] md-content .md-button {
   display: block;
-  border-radius: 0;
+  border-radius: 100%;
   color: inherit;
   cursor: pointer;
   font-weight: 400;

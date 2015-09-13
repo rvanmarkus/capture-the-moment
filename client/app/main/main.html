@@ -10,6 +10,18 @@
 </md-toolbar>
 
 <md-content>
-	<h2>Push the button to capture your moment</h2>
-	<p>This is version <code>v0.1.4</code> of the awesome captureTheMoment App.</p>
+	<p style="text-align:center;">Push the button to capture your moment</p>
+
+	<div class="outer-ring">
+		<div class='middle-ring'>
+			<md-button class='md-fab magic-button' style="margin:20 auto;
+	width:280px;
+	height:280px;
+	border-radius:100% !important;
+	background:#DD2C00" ng-click="startStreamingMicrophone()"></md-button>
+		</div>
+	</div>
+	<div data-ng-show="error" class="text-danger">
+		<strong>{{error}}</strong>
+	</div>
 </md-content>
