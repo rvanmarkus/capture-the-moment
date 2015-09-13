@@ -1,4 +1,4 @@
-<md-toolbar scroll-shrink>
+<md-toolbar scroll-shrink hide>
 
 	<span layout="row" layout-align="space-between" class="md-toolbar-tools md-toolbar-tools-top">
 		<md-button ng-click="edit.goBack()" aria-label="Back to detail view">
@@ -15,14 +15,14 @@
 
 </md-toolbar>
 
-<md-button class="md-accent md-fab md-fab-bottom-right fab-overlap"
+<!-- <md-button class="md-accent md-fab md-fab-bottom-right fab-overlap"
            aria-label="Save moment"
            ng-click="edit.update(editForm)"
            ng-disabled="!editForm.$dirty || editForm.$invalid">
     <md-icon md-svg-icon="action:ic_done_24px"></md-icon>
-</md-button>
+</md-button> -->
 
-<md-content class="md-padding" flex id="moment-edit-content">
+<md-content class="md-padding" flex id="moment-edit-content" hide>
 
     <form name="editForm">
 
