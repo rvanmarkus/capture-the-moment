@@ -23,10 +23,10 @@ module.exports = function (app) {
 		.post(middleware.removeReservedSchemaKeywords);
 
 		// Insert routes below
-	
+	app.use('/api/moments', require('./api/moments'));
 	app.use('/api/users', require('./api/user'));
 	app.use('/auth', require('./lib/auth'));
-	
+
 
 	// All undefined asset or api routes should return a 404
 	app.route('/:url(api|auth|components|app|bower_components|assets)/*')

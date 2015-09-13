@@ -11,6 +11,7 @@
 	angular
 		.module('captureTheMomentApp', [
 			// Add modules below
+			'captureTheMomentApp.moment',
 			'ngCookies',
 			'ngResource',
 			'ngSanitize',
