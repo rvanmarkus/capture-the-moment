@@ -1,0 +1,25 @@
+
+
+
+  <div flex layout="column" tabIndex="-1" role="main" class="md-whiteframe-z2">
+
+    <md-toolbar layout="row" class="md-whiteframe-z1">
+      <md-button class="menu" hide-gt-sm ng-click="ul.toggleList()" aria-label="Show User List">
+        <md-icon md-svg-icon="menu" ></md-icon>
+      </md-button>
+      <h1>Angular Material - Starter App</h1>
+    </md-toolbar>
+
+    <md-content flex id="content">
+      <!-- <md-icon md-svg-icon="{{ul.selected.avatar}}" class="avatar"></md-icon>-->
+      <img ng-src = '{{ul.selected.image}}' class="avatar">
+      <h2>{{ul.selected.name}}</h2>
+      <p>{{ul.selected.content}}</p>
+
+      <md-button class="contact" md-no-ink ng-click="ul.showContactOptions($event)" aria-label="Contact User">
+        <md-tooltip>Contact {{ ul.selected.name }}</md-tooltip>
+        <i class="material-icons">share</i>
+        <!--<md-icon md-svg-icon="share"></md-icon>-->
+      </md-button>
+    </md-content>
+
