@@ -18,7 +18,7 @@ export function emSidebar(): ng.IDirective {
 class SidebarController {
   private $mdSidenav;
   private $log;
-  public menu: Array;
+  public menu;
 
   constructor($scope: ng.IScope, $timeout: ng.ITimeoutService, $mdSidenav: any, $log: ng.ILogService) {
     this.$mdSidenav = $mdSidenav;

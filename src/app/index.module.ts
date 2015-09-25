@@ -7,7 +7,7 @@ import { Moments} from './main/main.controller';
 import { WebDevTecService } from '../app/components/webDevTec/webDevTec.service';
 import { acmeNavbar } from '../app/components/navbar/navbar.directive';
 import { emSidebar } from '../app/components/sidebar/sidebar.directive'
-import { recordMomentDialog } from '../app/components/moments/recordDialog.controller'
+import { recordMomentDialogController } from '../app/components/moments/recordDialog.controller'
 declare var moment: moment.MomentStatic;
 
 module emoment {
@@ -24,7 +24,7 @@ module emoment {
     })
     .run(runBlock)
     .service('webDevTec', WebDevTecService)
-    .controller('RecordDialogController', recordMomentDialog)
+    .controller('RecordDialogController', recordMomentDialogController)
     .controller('MainController', Moments.MainController)
     .directive('acmeNavbar', acmeNavbar)
     .directive('emSidebar', emSidebar);
