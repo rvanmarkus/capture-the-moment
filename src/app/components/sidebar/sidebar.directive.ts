@@ -28,7 +28,7 @@ class SidebarController {
       {
         title: 'Home',
         icon: 'add_circle',
-        link: '/'
+        link: '#/'
       },
       {
         title: 'Moments',
@@ -48,11 +48,8 @@ class SidebarController {
     ]
   }
 
-  $scope.close = function() {
-    $mdSidenav('left').close()
-      .then(function() {
-        $log.debug("close LEFT is done");
-      });
-  };
+  toggleSidebar() {
+    this.$mdSidenav('left').toggle();
+  }
 
 }
