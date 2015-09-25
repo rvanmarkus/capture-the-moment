@@ -48,10 +48,10 @@ class SidebarController {
     ]
   }
 
-  public close = function () {
-    this.$mdSidenav('left').close()
-      .then(function () {
-        this.$log.debug("close LEFT is done");
+  $scope.close = function() {
+    $mdSidenav('left').close()
+      .then(function() {
+        $log.debug("close LEFT is done");
       });
   };
 

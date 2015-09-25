@@ -4,7 +4,7 @@ interface recordDialogScope extends ng.IScope {
 /** @ngInject */
 export class recordMomentDialogController {
   constructor($scope:recordDialogScope, $mdDialog:ng.material.IDialogService){
-    self.tags = [];
+    $scope.hashtags = [];
     $scope.closeDialog=()=>{
       $mdDialog.cancel();
     }
