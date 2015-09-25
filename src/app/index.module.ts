@@ -7,6 +7,8 @@ import { Moments} from './main/main.controller';
 import { WebDevTecService } from '../app/components/webDevTec/webDevTec.service';
 import { acmeNavbar } from '../app/components/navbar/navbar.directive';
 import { emSidebar } from '../app/components/sidebar/sidebar.directive'
+import { AudioContextService, UserMediaProvider, convertFloat32ToInt16 } from './main/util.services';
+
 import { recordMomentDialogController } from '../app/components/moments/recordDialog.controller'
 declare var moment: moment.MomentStatic;
 
@@ -23,9 +25,11 @@ module emoment {
         .accentPalette('orange');
     })
     .run(runBlock)
+    .service('audioContext', AudioContextService)
+    .service('userMediaProvider', UserMediaProvider)
     .service('webDevTec', WebDevTecService)
     .controller('RecordDialogController', recordMomentDialogController)
     .controller('MainController', Moments.MainController)
     .directive('acmeNavbar', acmeNavbar)
-    .directive('emSidebar', emSidebar);
+    .directive('emSidebar', emSidebar)
 }

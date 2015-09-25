@@ -2,6 +2,7 @@ import {Moments} from './main/main.controller';
 
 /** @ngInject */
 export function routerConfig($stateProvider: ng.ui.IStateProvider, $urlRouterProvider: ng.ui.IUrlRouterProvider) {
+
   $stateProvider
     .state('home', {
       url: '/',
