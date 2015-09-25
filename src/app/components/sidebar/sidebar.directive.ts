@@ -26,15 +26,28 @@ class SidebarController {
 
     this.menu = [
       {
-        title: 'Start',
-        icon:'start',
-        link : ''
+        title: 'Home',
+        icon: 'start',
+        type: 'link',
+        state: '/'
       },
       {
         title: 'Moments',
         icon: 'replay',
-        link : ''
-
+        type: 'link',
+        state: '/moments'
+      },
+      {
+        title: 'Settings',
+        icon: 'settings',
+        type: 'link',
+        state: '/settings'
+      },
+      {
+        title: 'Logout',
+        icon: 'logout',
+        type: 'link',
+        state: '/login'
       }
     ]
   }

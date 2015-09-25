@@ -11,10 +11,15 @@ export function routerConfig($stateProvider: ng.ui.IStateProvider, $urlRouterPro
     })
     .state('moments', {
       url: '/moments',
-      templateUrl: 'app/components/moments/fullLlist.html',
-      controller: 'FullListController',
+      templateUrl: 'app/components/moments/fullList.html',
+      controller: '',
       controllerAs: 'fl',
       bindToController: true
+    })
+    .state('settings', {
+      url: '/settings',
+      templateUrl: 'app/components/settings/settings.html',
+      controller: ''
     });
 
   $urlRouterProvider.otherwise('/');
