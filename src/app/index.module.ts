@@ -4,6 +4,7 @@ import { config } from './index.config';
 import { routerConfig } from './index.route';
 import { runBlock } from './index.run';
 import { Moments} from './main/main.controller';
+import { LoginController } from '../app/components/login/login.controller';
 import { WebDevTecService } from '../app/components/webDevTec/webDevTec.service';
 import { acmeNavbar } from '../app/components/navbar/navbar.directive';
 import { emSidebar } from '../app/components/sidebar/sidebar.directive';
@@ -16,7 +17,7 @@ declare var moment: moment.MomentStatic;
 module emoment {
   'use strict';
 
-  angular.module('emoment', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ngMessages', 'ngAria', 'ui.router', 'ngMaterial'])
+  angular.module('emoment', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ngMessages', 'ngAria', 'ui.router', 'ngMaterial', 'toastr', 'firebase'])
     .constant('moment', moment)
     .config(config)
     .config(routerConfig)
@@ -32,6 +33,7 @@ module emoment {
     .controller('RecordDialogController', recordMomentDialogController)
     .controller('MainController', Moments.MainController)
     .controller('SettingsController', SettingsController)
+    .controller('LoginController', LoginController)
     .directive('acmeNavbar', acmeNavbar)
     .directive('emSidebar', emSidebar)
 }
