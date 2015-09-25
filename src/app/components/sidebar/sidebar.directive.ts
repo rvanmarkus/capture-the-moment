@@ -27,27 +27,23 @@ class SidebarController {
     this.menu = [
       {
         title: 'Home',
-        icon: 'start',
-        type: 'link',
-        state: '/'
+        icon: 'add_circle',
+        link: '/'
       },
       {
         title: 'Moments',
-        icon: 'replay',
-        type: 'link',
-        state: '/moments'
+        icon: 'settings_backup_restore',
+        link: '#/moments'
       },
       {
         title: 'Settings',
         icon: 'settings',
-        type: 'link',
-        state: '/settings'
+        link: '#/settings'
       },
       {
         title: 'Logout',
-        icon: 'logout',
-        type: 'link',
-        state: '/login'
+        icon: 'account_circle',
+        link: '#/login'
       }
     ]
   }
