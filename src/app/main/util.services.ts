@@ -3,7 +3,7 @@ export function AudioContextService() {
 }
 
 /** @ngInject */
-export function UserMediaService($window: ng.IWindowService) {
+export function UserMediaProvider($window: ng.IWindowService) {
   return function (opts) {
     return new Promise(function (resolve, reject) {
       $window.navigator.webkitGetUserMedia(opts, resolve, reject);

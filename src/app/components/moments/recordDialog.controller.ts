@@ -1,3 +1,4 @@
+import {convertFloat32ToInt16} from '../../main/util.services'
 
 interface recordDialogScope extends ng.IScope {
   closeDialog: Function
@@ -7,14 +8,14 @@ export class recordMomentDialogController {
   private getUserMediaProvider;
   private audioContext;
 
-  constructor($scope:recordDialogScope, $mdDialog:ng.material.IDialogService, getUserMedia, audioContext){
+  constructor($scope:recordDialogScope, $mdDialog:ng.material.IDialogService, userMediaProvider, audioContext){
     $scope.closeDialog=()=>{
       $mdDialog.cancel();
     };
 
     this.audioContext = audioContext;
-    this.getUserMediaProvider = getUserMedia;
-
+    this.getUserMediaProvider = userMediaProvider;
+    this.recordUserMedia();
   }
 
   public recordUserMedia(){
@@ -35,7 +36,7 @@ export class recordMomentDialogController {
 
     this.getUserMediaProvider({
       audio: true
-    }).then(function(stream) {
+    }).then((stream) => {
       var audioInput = this.audioContext.createMediaStreamSource(stream);
       var bufferSize = 2048;
 
