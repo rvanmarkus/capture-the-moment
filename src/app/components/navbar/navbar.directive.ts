@@ -11,7 +11,6 @@ export function acmeNavbar(): ng.IDirective {
     controllerAs: 'vm',
     bindToController: true
   };
-
 }
 
 /** @ngInject */

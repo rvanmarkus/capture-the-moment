@@ -26,23 +26,32 @@ class SidebarController {
 
     this.menu = [
       {
-        title: 'Start',
-        icon:'start',
-        link : ''
+        title: 'Home',
+        icon: 'add_circle',
+        link: '/'
       },
       {
         title: 'Moments',
-        icon: 'replay',
-        link : ''
-
+        icon: 'settings_backup_restore',
+        link: '#/moments'
+      },
+      {
+        title: 'Settings',
+        icon: 'settings',
+        link: '#/settings'
+      },
+      {
+        title: 'Logout',
+        icon: 'account_circle',
+        link: '#/login'
       }
     ]
   }
 
-  public close = function () {
-    this.$mdSidenav('left').close()
-      .then(function () {
-        this.$log.debug("close LEFT is done");
+  $scope.close = function() {
+    $mdSidenav('left').close()
+      .then(function() {
+        $log.debug("close LEFT is done");
       });
   };
 

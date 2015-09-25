@@ -34,6 +34,7 @@ export namespace Moments {
           targetEvent: $event,
           templateUrl:'/app/components/moments/recordDialog.html',
           controller: 'RecordDialogController',
+          controllerAs: 'create'
         });
       }
     }

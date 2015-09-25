@@ -1,7 +1,8 @@
 import {convertFloat32ToInt16} from '../../main/util.services'
 
 interface recordDialogScope extends ng.IScope {
-  closeDialog: Function
+  closeDialog: Function;
+  hashtags: Array;
 }
 /** @ngInject */
 export class recordMomentDialogController {
@@ -16,6 +17,11 @@ export class recordMomentDialogController {
     this.audioContext = audioContext;
     this.getUserMediaProvider = userMediaProvider;
     this.recordUserMedia();
+
+    $scope.hashtags = [];
+    $scope.closeDialog=()=>{
+      $mdDialog.cancel();
+    }
   }
 
   public recordUserMedia(){
@@ -61,5 +67,6 @@ export class recordMomentDialogController {
     }, function(err) {
       console.log(err)
     });
+
   }
 }
