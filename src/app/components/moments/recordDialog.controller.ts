@@ -13,14 +13,14 @@ export class recordMomentDialogController {
   private outputStream;
 
   constructor($scope:recordDialogScope, $mdDialog:ng.material.IDialogService, userMediaProvider, audioContext, $timeout, $firebaseAuth, $mdToast: any){
-    this.$mdToast = $mdToast;
     this.audioContext = audioContext;
     this.getUserMediaProvider = userMediaProvider;
     this.recordUserMedia();
     $scope.hashtags = [];
-
+    this.$mdToast = $mdToast;
+    this.currentMedia = ' ';
     var ref = new Firebase('https://emoment.firebaseio.com');
-    this.emomentsRef = ref.child('emo').child('emoments');
+    this.emomentsRef = ref.child('emoments');
     this.twitter = ref.getAuth().twitter;
 
     $scope.closeDialog=()=>{
@@ -32,12 +32,14 @@ export class recordMomentDialogController {
 
   public postEmoment() {
     let timestamp = new Date().getTime();
-    this.emomentsRef.push({
+    this.moment = {
       profilePicture: this.twitter.profileImageURL,
-      title: 'sddsaf',
+      username: this.twitter.username,
       hashtags: this.$scope.hashtags,
+      fingerprint: this.currentMedia,
       timestamp: timestamp
-    });
+    }
+    this.emomentsRef.push(this.moment);
     this.$scope.closeDialog();
     this.$mdToast.show(
       this.$mdToast.simple().content('Emoment successfully posted!').hideDelay(2500);
