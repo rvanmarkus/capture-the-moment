@@ -7,7 +7,7 @@
   </md-toolbar>
   
   <md-list layout="column" flex layout-align="end start">
-    <md-item class="md-button" ng-repeat="item in vm.menu" layout-fill ng-href="{{item.link}}" ng-click="vm.toggleSidebar()">
+    <a class="md-button" ng-repeat="item in vm.menu" layout-fill ng-href="{{item.link}}" ng-click="vm.toggleSidebar()">
       <md-item-content md-ink-ripple layout="row" layout-align="start center">
         <div class="inset">
           <md-icon class="material-icons">{{item.icon}}</md-icon>
@@ -16,6 +16,6 @@
           <h3>{{item.title}}</h3>
         </div>
       </md-item-content>
-    </md-item>
+    </a>
   </md-list>
 </md-sidenav>
