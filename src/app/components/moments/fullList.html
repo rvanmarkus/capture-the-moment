@@ -1,4 +1,4 @@
-<md-content flex layout='column' layout-fill>
+<md-virtual-repeat-container flex layout='column' layout-fill>
   <md-tabs md-dynamic-height='true' flex>
     <md-tab id="mymoments" md-stretch-tabs="always">
       <md-tab-label>MyMoments</md-tab-label>
@@ -20,7 +20,7 @@
       <md-tab-label flex>WorldMoments</md-tab-label>
       <md-tab-body>
         <md-list>
-           <md-list-item class="md-3-line" ng-repeat="post in friendsmoments">
+           <md-list-item md-virtual-repeat="post in friendsmoments" md-on-demand class="repeated-item md-3-line" flex>
              <img ng-src="{{post.profileImageURL}}" class="md-avatar" alt="{{post.username}}" />
              <div class="md-list-item-text" layout="column">
                <h3>{{post.username}}</h3>
@@ -32,4 +32,4 @@
       </md-tab-body>
     </md-tab>
   </md-tabs>
-</md-content>
+</md-virtual-repeat-container>
