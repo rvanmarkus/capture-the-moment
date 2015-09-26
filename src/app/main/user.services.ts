@@ -40,6 +40,8 @@ export function UserServices($firebaseAuth){
     user: this.user,
     getAllMoments: this.getAllMoments,
     userIsLoggedIn: this.userIsLoggedIn,
-    authObj : $firebaseAuth(this.ref)
+    authObj : $firebaseAuth(this.ref),
+    usersRef: this.usersRef,
+    emomentsRef: this.emomentsRef
   }
 }

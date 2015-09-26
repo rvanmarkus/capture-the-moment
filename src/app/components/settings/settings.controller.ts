@@ -7,7 +7,8 @@ export class SettingsController {
 
 
   /** @ngInject */
-  constructor($scope: ng.IScope, $timeout: ng.ITimeoutService, $log: ng.ILogService, $mdToast: any, $mdDialog: ng.material.IDialogService) {
+  constructor($scope: ng.IScope, $timeout: ng.ITimeoutService, $log: ng.ILogService, $mdToast: any, $mdDialog: ng.material.IDialogService, userServices) {
+    this.userServices = userServices;
     this.$mdToast = $mdToast;
     this.$scope = $scope;
     this.$log = $log;
@@ -49,7 +50,10 @@ export class SettingsController {
     }
 
     $scope.logout = function() {
-      console.log('logout button clicked')
+      $mdToast.show(
+        $mdToast.simple().content('HIHIHIH').hideDelay(2500);
+      );
+      this.userServices.ref.unauth();
     }
   }
 }

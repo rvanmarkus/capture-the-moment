@@ -31,7 +31,7 @@ export class recordMomentDialogController {
   public postEmoment() {
     let timestamp = new Date().getTime();
     this.emomentsRef.push({
-      profilePicture: this.twitter.profileImageURL,
+      profilePicture: this.user.profileImageURL,
       title: 'sddsaf',
       hashtags: this.$scope.hashtags,
       timestamp: timestamp
