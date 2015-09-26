@@ -1,16 +1,27 @@
 var LoginController = (function () {
-    function LoginController($scope, $firebaseObject) {
+    function LoginController($scope, $firebaseAuth, $location) {
         var ref = new Firebase('https://emoment.firebaseio.com');
-        ref.authWithOAuthPopup("twitter", function (error, authData) {
-            if (error) {
-                console.log("Login Failed!", error);
-            }
-            else {
-                console.log("Authenticated successfully with payload:", authData);
-                console.log('Handle: ' + authData.twitter.username);
-            }
-        });
+        this.usersRef = ref.child('users');
+        this.authObj = $firebaseAuth(ref);
+        this.location = $location;
     }
+    LoginController.prototype.authenticate = function () {
+        var _this = this;
+        this.authObj.$authWithOAuthPopup('twitter').then(function (authData) {
+            _this.twitter = authData.twitter;
+            _this.authData = authData;
+            console.log('adsfasdf', _this.authData);
+            _this.usersRef.set({
+                uid: _this.uid,
+                username: _this.twitter.username,
+                displayName: _this.twitter.displayName,
+                profileImageURL: _this.twitter.profileImageURL
+            });
+            _this.location.path('/');
+        }).catch(function (error) {
+            console.error("Authentication failed:", error);
+        });
+    };
     return LoginController;
 })();
 exports.LoginController = LoginController;

@@ -13,7 +13,6 @@ export namespace Moments {
     private $log;
     public $mdDialog;
 
-
     /** @ngInject */
     constructor ($scope:MainScope, $timeout: ng.ITimeoutService, webDevTec: WebDevTecService, $mdUtil: any, $mdSidenav: angular.material.ISidenavService, $log: ng.ILogService, $mdDialog: ng.material.IDialogService) {
       this.awesomeThings = new Array();
@@ -60,10 +59,13 @@ export namespace Moments {
       return debounceFn;
     }
 
+    showToastr() {
+      this.toastr.info('Fork <a href="https://github.com/Swiip/generator-gulp-angular" target="_blank"><b>generator-gulp-angular</b></a>');
+      this.classAnimation = '';
+    }
 
     getWebDevTec() {
       this.awesomeThings = this.webDevTec.tec;
     }
   }
 }
-
