@@ -27,7 +27,7 @@ class SidebarController {
     this.menu = [
       {
         title: 'Home',
-        icon: 'add_circle',
+        icon: 'album',
         link: '#/'
       },
       {

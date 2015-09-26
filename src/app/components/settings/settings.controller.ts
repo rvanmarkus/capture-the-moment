@@ -46,6 +46,10 @@ export class SettingsController {
       console.log('delete history clicked')
     }
 
+    $scope.reportError = function() {
+      console.log('button for report error clicked')
+    }
+
     $scope.logout = function() {
       console.log('logout button clicked')
     }
