@@ -1,57 +1,34 @@
 <md-content flex layout='column' layout-fill>
   <md-tabs md-dynamic-height='true' flex>
-    <md-tab id="tab1">
+    <md-tab id="mymoments">
       <md-tab-label>MyMoments</md-tab-label>
       <md-tab-body>
         <md-list>
-           <md-list-item class="md-3-line">
-             <img ng-src="{{fl.twitter.profileImageURL}}" class="md-avatar" alt="{{fl.twitter.displayName}}" />
+           <md-list-item class="md-3-line" ng-repeat="post in usermoments">
+             <img ng-src="{{post.profileImageURL}}" class="md-avatar" alt="{{post.username}}" />
              <div class="md-list-item-text" layout="column">
-               <h3>{{fl.twitter.username}}</h3>
-               <h4><b>#AWESOME</b></h4>
+               <h3>{{post.username}}</h3>
+               <h4><b>{{post.hashtags}}</b></h4>
                <p>#emoment</p>
              </div>
            </md-list-item>
-           <md-list-item class="md-3-line">
-             <img ng-src="{{fl.twitter.profileImageURL}}" class="md-avatar" alt="{{fl.twitter.displayName}}" />
-             <div class="md-list-item-text" layout="column">
-               <h3>{{fl.twitter.username}}</h3>
-               <h4><b>#AWESOME</b></h4>
-               <p>#emoment</p>
-             </div>
-           </md-list-item>
-           <md-list-item class="md-3-line">
-             <img ng-src="{{fl.twitter.profileImageURL}}" class="md-avatar" alt="{{fl.twitter.displayName}}" />
-             <div class="md-list-item-text" layout="column">
-               <h3>{{fl.twitter.username}}</h3>
-               <h4><b>#AWESOME</b></h4>
-               <p>#emoment</p>
-             </div>
-           </md-list-item>
-           <md-list-item class="md-3-line">
-             <img ng-src="{{fl.twitter.profileImageURL}}" class="md-avatar" alt="{{fl.twitter.displayName}}" />
-             <div class="md-list-item-text" layout="column">
-               <h3>{{fl.twitter.username}}</h3>
-               <h4><b>#AWESOME</b></h4>
-               <p>#emoment</p>
-             </div>
-           </md-list-item>
-           <md-divider ></md-divider>
-         </md-list>
+        </md-list>
       </md-tab-body>
     </md-tab>
 
-    <md-tab id="tab2">
-      <md-tab-label>MyFriends</md-tab-label>
+    <md-tab id="worldmoments">
+      <md-tab-label>WorldMoments</md-tab-label>
       <md-tab-body>
-        Friends moments here
-      </md-tab-body>
-    </md-tab>
-
-    <md-tab id="tab3">
-      <md-tab-label>Trending</md-tab-label>
-      <md-tab-body>
-        trending moments here
+        <md-list>
+           <md-list-item class="md-3-line" ng-repeat="post in friendsmoments">
+             <img ng-src="{{post.profileImageURL}}" class="md-avatar" alt="{{post.username}}" />
+             <div class="md-list-item-text" layout="column">
+               <h3>{{post.username}}</h3>
+               <h4><b>{{post.hashtags}}</b></h4>
+               <p>#emoment</p>
+             </div>
+           </md-list-item>
+        </md-list>
       </md-tab-body>
     </md-tab>
   </md-tabs>

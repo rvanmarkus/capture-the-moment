@@ -29,7 +29,7 @@ export function routerConfig($stateProvider: ng.ui.IStateProvider,
       url: '/settings',
       templateUrl: 'app/components/settings/settings.html',
       controller: 'SettingsController',
-      controllerAs: 'settings',
+      controllerAs: 'settings'
     })
     .state('login', {
       url: '/login',
