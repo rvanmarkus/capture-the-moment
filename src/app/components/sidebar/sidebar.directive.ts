@@ -20,9 +20,11 @@ class SidebarController {
   private $log;
   public menu;
 
-  constructor($scope: ng.IScope, $timeout: ng.ITimeoutService, $mdSidenav: any, $log: ng.ILogService) {
+  constructor($scope: ng.IScope, $timeout: ng.ITimeoutService, $mdSidenav: any, $log: ng.ILogService, userServices, $state) {
     this.$mdSidenav = $mdSidenav;
     this.$log = $log;
+    this.user = userServices;
+    this.state = $state;
 
     this.menu = [
       {
