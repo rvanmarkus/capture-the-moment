@@ -71,14 +71,5 @@ export namespace Moments {
     getWebDevTec() {
       this.awesomeThings = this.webDevTec.tec;
     }
-
-    postEmoment() {
-      let timestamp = new Date().getTime();
-      this.emomentsRef.push({
-        title: title,
-        hashtags: [],
-        timestamp: timestamp
-      })
-    }
   }
 }
