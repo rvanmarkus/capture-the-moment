@@ -2,7 +2,7 @@
 export class LoginController {
   constructor($scope, userServices, $location){
     this.location = $location;
-    this.userServices = userServices
+    this.userServices = userServices;
   }
   authenticate() {
     this.userServices.authenticate().then((user)=>{
@@ -12,7 +12,6 @@ export class LoginController {
     });
   }
   unauthenticate() {
-
     console.log('logged out');
   }
 }

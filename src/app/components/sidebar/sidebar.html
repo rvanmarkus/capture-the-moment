@@ -6,7 +6,7 @@
       <div ng-bind="vm.user.user.twitter.displayName">Jan Jansen</div>
     </div>
   </md-toolbar>
-  <md-list>
+  <md-list flex>
     <md-item ng-repeat="item in vm.menu" layout="column" >
       <a class="md-button" ng-href="{{item.link}}" ng-click="vm.toggleSidebar()">
         <md-item-content md-ink-ripple layout="row" layout-align="start center">
