@@ -1,19 +1,25 @@
 /** @ngInject */
-export function UserServices($firebaseAuth){
-  this.user = {};
+export function UserServices($firebaseAuth, user, $scope){
   this.ref = new Firebase('https://emoment.firebaseio.com');
   this.usersRef = this.ref.child('users');
   this.emomentsRef = this.ref.child('emoments');
+  this.authObj = $firebaseAuth(this.ref);
+  this.$scope = $scope;
 
   this.authenticate = function() {
     return this.authObj.$authWithOAuthPopup('twitter').then((authData) => {
-      this.user = authData;
+      this.twitter = authData.twitter;
       this.authData = authData;
+      this.user = {
+            "uid": this.authData.uid,
+            "username": this.twitter.username,
+            "displayName": this.twitter.displayName,
+            "profileImageURL": this.twitter.profileImageURL
+      }
       this.usersRef.push(this.user);
       return this.user;
-
     }).catch(function(error) {
-      console.error("Authentication failed: ", error);
+      console.log("Authentication failed: ", error);
     });
   };
 
@@ -22,7 +28,7 @@ export function UserServices($firebaseAuth){
   };
 
   this.userIsLoggedIn = function(){
-    return (this.authData)
+    return this.authData;
   };
 
   this.getUser = function(){

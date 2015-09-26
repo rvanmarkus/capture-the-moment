@@ -23,9 +23,8 @@ export class recordMomentDialogController {
     this.$scope.closeDialog=()=>{
       $mdDialog.cancel();
     };
-    this.user = userServices.user.twitter;
+    this.user = userServices.getUser();
     this.emomentsRef = userServices.emomentsRef;
-    console.log('emomentsRef ', this.emomentsRef);
   }
 
   public postEmoment() {

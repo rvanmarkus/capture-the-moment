@@ -26,7 +26,7 @@ export namespace Moments {
       this.$mdDialog = $mdDialog;
       this.activate($timeout);
 
-      this.twitter = userServices.getUser().twitter;
+      this.user = userServices.getUser();
 
       $scope.showRecordDialog = function($event) {
         $mdDialog.show({
@@ -61,7 +61,7 @@ export namespace Moments {
       }, 200);
       return debounceFn;
     }
-    
+
     getWebDevTec() {
       this.awesomeThings = this.webDevTec.tec;
     }
