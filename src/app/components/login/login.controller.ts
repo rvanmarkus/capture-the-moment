@@ -7,6 +7,8 @@ export class LoginController {
   authenticate() {
     this.userServices.authenticate().then((user)=>{
       this.location.path('/');
+    }).catch(function(error) {
+      console.error("Authentication failed:", error);
     });
   }
   unauthenticate() {

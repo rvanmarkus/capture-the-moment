@@ -21,9 +21,7 @@ export class SettingsController {
         state: false
       }
     ];
-    console.log(this.settings);
     $scope.showTermsAndConditions = function($event) {
-
       $mdDialog.show(
         $mdDialog.alert()
           .parent(angular.element(document.querySelector('#popupContainer')))
@@ -36,7 +34,7 @@ export class SettingsController {
       );
     }
     $scope.showSimpleToast = function(obj) {
-      console.log("first- " + obj.name + " : " obj.state);
+      console.log("first- " + obj.name + " : ", obj.state);
       $mdToast.show(
         $mdToast.simple().content(obj.name + " is now set as " + obj.state).hideDelay(1500)
       );
@@ -53,8 +51,5 @@ export class SettingsController {
     $scope.logout = function() {
       console.log('logout button clicked')
     }
-
   }
-
-
 }
