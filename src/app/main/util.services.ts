@@ -6,6 +6,9 @@ export function AudioContextService() {
 export function UserMediaProvider($window: ng.IWindowService) {
   return function (opts) {
     return new Promise(function (resolve, reject) {
+      $window.navigator.getUserMedia = $window.navigator.getUserMedia ||
+        $window.navigator.webkitGetUserMedia ||
+        $window.navigator.mozGetUserMedia;
       $window.navigator.webkitGetUserMedia(opts, resolve, reject);
     });
   };
@@ -18,3 +21,4 @@ export function convertFloat32ToInt16(buffer) {
   }
   return buf.buffer;
 }
+//./match -d /Users/XebiaLeenlaptop/beatgrid/bla.car --match-first -s match.first.suppress_updates=false -v

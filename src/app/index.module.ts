@@ -25,8 +25,8 @@ module emoment {
         .accentPalette('orange');
     })
     .run(runBlock)
-    .service('audioContext', AudioContextService)
-    .service('userMediaProvider', UserMediaProvider)
+    .factory('audioContext', AudioContextService)
+    .factory('userMediaProvider', ['$window',UserMediaProvider])
     .service('webDevTec', WebDevTecService)
     .controller('RecordDialogController', recordMomentDialogController)
     .controller('MainController', Moments.MainController)

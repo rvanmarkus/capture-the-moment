@@ -11,6 +11,8 @@
         <md-progress-circular md-mode="indeterminate"></md-progress-circular>
       </div>
       <p>We're in our time machine searching for you moment...</p>
+      <hr/>
+      <strong ng-bind="currentMedia"></strong>
     </section>
 
     <form name="createForm">
@@ -18,10 +20,10 @@
       <section class="section" layout="column">
 
 				<span layout="row" layout-sm="column">
-          <md-chips 
-          ng-model="hashtags"  
+          <md-chips
+          ng-model="hashtags"
           placeholder="Enter a tag"
-          delete-button-label="Remove Tag" 
+          delete-button-label="Remove Tag"
           delete-hint="Press delete to remove tag"
           secondary-placeholder="+Tag"></md-chips>
 
