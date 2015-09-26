@@ -45,7 +45,7 @@ class SidebarController {
       {
         title: 'Logout',
         icon: 'account_circle',
-        link: '/login'
+        link: '/logout'
       }
     ]
   }

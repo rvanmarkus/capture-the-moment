@@ -20,4 +20,5 @@ export function config($logProvider: ng.ILogProvider, $mdThemingProvider: angula
     })
     .accentPalette('blue')
     .backgroundPalette('grey-background');
+
 }

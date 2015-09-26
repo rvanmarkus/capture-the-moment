@@ -4,6 +4,8 @@ export class SettingsController {
   private $mdToast;
   public settings;
   public $mdDialog;
+  private userServices;
+  private $scope: ng.IScope;
 
 
   /** @ngInject */
@@ -33,27 +35,27 @@ export class SettingsController {
           .ok('Confirm')
           .targetEvent($event)
       );
-    }
+    };
     $scope.showSimpleToast = function(obj) {
       console.log("first- " + obj.name + " : ", obj.state);
       $mdToast.show(
         $mdToast.simple().content(obj.name + " is now set as " + obj.state).hideDelay(1500)
       );
-    }
+    };
 
     $scope.deleteHistory = function() {
       console.log('delete history clicked')
-    }
+    };
 
     $scope.reportError = function() {
       console.log('button for report error clicked')
     }
 
-    $scope.logout = function() {
-      $mdToast.show(
-        $mdToast.simple().content('HIHIHIH').hideDelay(2500);
-      );
-      this.userServices.ref.unauth();
-    }
+
+  }
+
+  logout() {
+    this.$mdToast.show(this.$mdToast.simple().content('HIHIHIH').hideDelay(2500));
+    this.userServices.ref.unauth();
   }
 }

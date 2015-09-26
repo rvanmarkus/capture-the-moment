@@ -17,6 +17,12 @@ export function routerConfig($stateProvider: ng.ui.IStateProvider, $urlRouterPro
       templateUrl: 'app/main/main.html',
       controller: Moments.MainController,
       controllerAs: 'main',
+      resolve: {
+        "currentAuth": ["userServices", function (userServices) {
+          // $waitForAuth returns a promise so the resolve waits for it to complete
+          return userServices.authObj;
+        }]
+      }
 
     })
     .state('moments', {
