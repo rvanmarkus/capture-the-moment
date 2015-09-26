@@ -10,7 +10,7 @@ export class LoginController {
     this.authObj.$authWithOAuthPopup('twitter').then((authData) => {
       this.twitter = authData.twitter;
       this.authData = authData;
-      this.usersRef.set({
+      this.usersRef.push({
         uid: this.authData.uid,
         username: this.twitter.username,
         displayName: this.twitter.displayName,
