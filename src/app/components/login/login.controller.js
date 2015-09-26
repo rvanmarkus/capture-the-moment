@@ -10,9 +10,8 @@ var LoginController = (function () {
         this.authObj.$authWithOAuthPopup('twitter').then(function (authData) {
             _this.twitter = authData.twitter;
             _this.authData = authData;
-            console.log('adsfasdf', _this.authData);
             _this.usersRef.set({
-                uid: _this.uid,
+                uid: _this.authData.uid,
                 username: _this.twitter.username,
                 displayName: _this.twitter.displayName,
                 profileImageURL: _this.twitter.profileImageURL
