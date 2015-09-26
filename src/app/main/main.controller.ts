@@ -13,9 +13,8 @@ export namespace Moments {
     private $log;
     public $mdDialog;
 
-
     /** @ngInject */
-    constructor ($scope:MainScope, $timeout: ng.ITimeoutService, webDevTec: WebDevTecService, $mdUtil: any, $mdSidenav: angular.material.ISidenavService, $log: ng.ILogService, $mdDialog: ng.material.IDialogService) {
+    constructor ($scope:MainScope, $timeout: ng.ITimeoutService, webDevTec: WebDevTecService, toastr: any, $mdUtil: any, $mdSidenav: angular.material.ISidenavService, $log: ng.ILogService, $mdDialog: ng.material.IDialogService, $firebaseAuth)  {
       this.awesomeThings = new Array();
       this.webDevTec = webDevTec;
       this.classAnimation = '';
@@ -25,6 +24,9 @@ export namespace Moments {
       this.$log = $log;
       this.$mdDialog = $mdDialog;
       this.activate($timeout);
+
+      var ref = new Firebase('https://emoment.firebaseio.com');
+      this.twitter = ref.getAuth().twitter;
 
       $scope.showRecordDialog = function($event) {
 
@@ -60,10 +62,13 @@ export namespace Moments {
       return debounceFn;
     }
 
+    showToastr() {
+      this.toastr.info('Fork <a href="https://github.com/Swiip/generator-gulp-angular" target="_blank"><b>generator-gulp-angular</b></a>');
+      this.classAnimation = '';
+    }
 
     getWebDevTec() {
       this.awesomeThings = this.webDevTec.tec;
     }
   }
 }
-
