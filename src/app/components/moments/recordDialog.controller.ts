@@ -11,18 +11,23 @@ export class recordMomentDialogController {
   private client;
   private $scope;
   private outputStream;
+  private $mdDialog;
+  private $mdToast;
+  private user;
+  private emomentsRef;
 
   constructor($scope:recordDialogScope, $mdDialog:ng.material.IDialogService, userMediaProvider, audioContext, $timeout, $firebaseAuth, $mdToast: any, userServices){
     this.$mdToast = $mdToast;
     this.audioContext = audioContext;
     this.getUserMediaProvider = userMediaProvider;
     this.$scope = $scope;
+    this.$mdDialog = $mdDialog;
+
+
 
     this.recordUserMedia();
     this.$scope.hashtags = [];
-    this.$scope.closeDialog=()=>{
-      $mdDialog.cancel();
-    };
+
     this.user = userServices.getUser();
     this.emomentsRef = userServices.emomentsRef;
   }
@@ -39,6 +44,10 @@ export class recordMomentDialogController {
     this.$mdToast.show(
       this.$mdToast.simple().content('Emoment successfully posted!').hideDelay(2500);
     );
+  }
+
+  public closeDialog(){
+    this.$mdDialog.cancel();
   }
 
   public recordUserMedia(){
