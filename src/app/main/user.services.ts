@@ -28,6 +28,8 @@ export function UserServices($firebaseAuth, user, $scope){
 
   this.getAllMoments = function(){
     //all moments voor user ophalen en returnen
+      return $firebaseArray(this.ref);
+
   };
 
   this.userIsLoggedIn = function(){
