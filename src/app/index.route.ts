@@ -20,7 +20,9 @@ export function routerConfig($stateProvider: ng.ui.IStateProvider, $urlRouterPro
     .state('settings', {
       url: '/settings',
       templateUrl: 'app/components/settings/settings.html',
-      controller: ''
+      controller: 'SettingsController',
+      controllerAs: 'settings',
+      bindToController: true
     });
 
   $urlRouterProvider.otherwise('/');

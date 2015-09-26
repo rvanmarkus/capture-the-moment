@@ -1,4 +1,4 @@
-import {convertFloat32ToInt16} from '../../main/util.services'
+import {convertFloat32ToInt16} from '../../main/util.services';
 
 interface recordDialogScope extends ng.IScope {
   closeDialog: Function;

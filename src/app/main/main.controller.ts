@@ -8,7 +8,6 @@ export namespace Moments {
     public webDevTec: WebDevTecService;
     public classAnimation: string;
     public creationDate: number;
-    public toastr: any;
     private $mdUtil: any;
     private $mdSidenav: any;
     private $log;
@@ -16,12 +15,11 @@ export namespace Moments {
 
 
     /** @ngInject */
-    constructor ($scope:MainScope, $timeout: ng.ITimeoutService, webDevTec: WebDevTecService, toastr: any, $mdUtil: any, $mdSidenav: angular.material.ISidenavService, $log: ng.ILogService, $mdDialog: ng.material.IDialogService) {
+    constructor ($scope:MainScope, $timeout: ng.ITimeoutService, webDevTec: WebDevTecService, $mdUtil: any, $mdSidenav: angular.material.ISidenavService, $log: ng.ILogService, $mdDialog: ng.material.IDialogService) {
       this.awesomeThings = new Array();
       this.webDevTec = webDevTec;
       this.classAnimation = '';
       this.creationDate = 1443021830401;
-      this.toastr = toastr;
       this.$mdUtil = $mdUtil;
       this.$mdSidenav = $mdSidenav;
       this.$log = $log;
@@ -62,12 +60,6 @@ export namespace Moments {
       return debounceFn;
     }
 
-
-
-    showToastr() {
-      this.toastr.info('Fork <a href="https://github.com/Swiip/generator-gulp-angular" target="_blank"><b>generator-gulp-angular</b></a>');
-      this.classAnimation = '';
-    }
 
     getWebDevTec() {
       this.awesomeThings = this.webDevTec.tec;

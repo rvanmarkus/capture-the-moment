@@ -6,7 +6,8 @@ import { runBlock } from './index.run';
 import { Moments} from './main/main.controller';
 import { WebDevTecService } from '../app/components/webDevTec/webDevTec.service';
 import { acmeNavbar } from '../app/components/navbar/navbar.directive';
-import { emSidebar } from '../app/components/sidebar/sidebar.directive'
+import { emSidebar } from '../app/components/sidebar/sidebar.directive';
+import { SettingsController } from '../app/components/settings/settings.controller';
 import { AudioContextService, UserMediaProvider, convertFloat32ToInt16 } from './main/util.services';
 
 import { recordMomentDialogController } from '../app/components/moments/recordDialog.controller'
@@ -15,7 +16,7 @@ declare var moment: moment.MomentStatic;
 module emoment {
   'use strict';
 
-  angular.module('emoment', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ngMessages', 'ngAria', 'ui.router', 'ngMaterial', 'toastr'])
+  angular.module('emoment', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ngMessages', 'ngAria', 'ui.router', 'ngMaterial'])
     .constant('moment', moment)
     .config(config)
     .config(routerConfig)
@@ -30,6 +31,7 @@ module emoment {
     .service('webDevTec', WebDevTecService)
     .controller('RecordDialogController', recordMomentDialogController)
     .controller('MainController', Moments.MainController)
+    .controller('SettingsController', SettingsController)
     .directive('acmeNavbar', acmeNavbar)
     .directive('emSidebar', emSidebar)
 }
