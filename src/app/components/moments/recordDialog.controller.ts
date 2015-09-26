@@ -22,9 +22,6 @@ export class recordMomentDialogController {
     this.getUserMediaProvider = userMediaProvider;
     this.$scope = $scope;
     this.$mdDialog = $mdDialog;
-
-
-
     this.recordUserMedia();
     this.$scope.hashtags = [];
 
@@ -33,17 +30,37 @@ export class recordMomentDialogController {
   }
 
   public postEmoment() {
+    this.getMetaData();
     let timestamp = new Date().getTime();
     this.emomentsRef.push({
-      profilePicture: this.user.profilePicture,
-      title: 'sddsaf',
-      hashtags: this.$scope.hashtags,
-      timestamp: timestamp
+      'profilePicture': this.user.profileImageURL,
+      'fingerprint': this.$scope.currentMedia,
+      'hashtags': this.$scope.hashtags,
+      'timestamp': timestamp
     });
     this.closeDialog();
     this.$mdToast.show(
-      this.$mdToast.simple().content('Emoment successfully posted!').hideDelay(2500);
+      this.$mdToast.simple().content('Emoment successfully posted!').hideDelay(2500)
     );
+  }
+
+  public getMetaData(){
+    const yoMama = '1443295586, 5, test/Qtier - Set Me On (David August Remix).cas, 111440';
+    yoMama.split(',');
+    // GET IT?!
+    const meh = [];
+    let hellNawh = yoMama.split(',');
+    for (var i = 0; i < hellNawh.length; i++) {
+      meh.push(hellNawh[i].trim());
+    }
+
+    var metaObject = {
+      'timestamp': meh[0],
+      'timeAgo': meh[1],
+      'song': meh[2],
+      'random': meh[3]
+    };
+    console.log('metaObject', metaObject);
   }
 
   public closeDialog(){

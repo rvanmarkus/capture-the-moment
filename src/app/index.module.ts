@@ -28,8 +28,8 @@ module emoment {
     .run(runBlock)
     .config(function($mdThemingProvider) {
       $mdThemingProvider.theme('default')
-        .primaryPalette('pink')
-        .accentPalette('orange');
+        .primaryPalette('red')
+        .accentPalette('teal');
     })
     .factory('momentsFactory', MomentsFactory)
     .factory('audioContext', AudioContextService)
