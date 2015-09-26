@@ -7,27 +7,27 @@ function routerConfig($stateProvider, $urlRouterProvider, $locationProvider) {
         requireBase: false
     });
     $stateProvider
-        .state('home', {
+    .state('home', {
         url: '/',
         templateUrl: 'app/main/main.html',
         controller: main_controller_1.Moments.MainController,
         controllerAs: 'main'
     })
-        .state('moments', {
+    .state('moments', {
         url: '/moments',
         templateUrl: 'app/components/moments/fullList.html',
         controller: lists_controller_1.ListsController,
         controllerAs: 'fl',
         bindToController: true
     })
-        .state('settings', {
+    .state('settings', {
         url: '/settings',
         templateUrl: 'app/components/settings/settings.html',
         controller: '',
         controllerAs: 'fl',
         bindToController: true
     })
-        .state('login', {
+    .state('login', {
         url: '/login',
         templateUrl: 'app/components/login/login.html',
         controller: login_controller_1.LoginController,

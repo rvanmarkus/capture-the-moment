@@ -28,22 +28,22 @@ class SidebarController {
       {
         title: 'Home',
         icon: 'album',
-        link: '#/'
+        link: '/'
       },
       {
         title: 'Moments',
         icon: 'settings_backup_restore',
-        link: '#/moments'
+        link: '/moments'
       },
       {
         title: 'Settings',
         icon: 'settings',
-        link: '#/settings'
+        link: '/settings'
       },
       {
         title: 'Logout',
         icon: 'account_circle',
-        link: '#/login'
+        link: '/login'
       }
     ]
   }
