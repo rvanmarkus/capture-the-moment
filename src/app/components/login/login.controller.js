@@ -1,8 +1,8 @@
 var LoginController = (function () {
     function LoginController($scope, $firebaseAuth, $location) {
-        var ref = new Firebase('https://emoment.firebaseio.com');
-        this.usersRef = ref.child('users');
-        this.authObj = $firebaseAuth(ref);
+        this.ref = new Firebase('https://emoment.firebaseio.com');
+        this.usersRef = this.ref.child('users');
+        this.authObj = $firebaseAuth(this.ref);
         this.location = $location;
     }
     LoginController.prototype.authenticate = function () {
@@ -20,6 +20,10 @@ var LoginController = (function () {
         }).catch(function (error) {
             console.error("Authentication failed:", error);
         });
+    };
+    LoginController.prototype.unauthenticate = function () {
+        this.ref.unauth();
+        console.log('logged out');
     };
     return LoginController;
 })();

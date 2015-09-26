@@ -1,9 +1,9 @@
 /** @ngInject */
 export class LoginController {
   constructor($scope, $firebaseAuth, $location){
-    var ref = new Firebase('https://emoment.firebaseio.com');
-    this.usersRef = ref.child('users');
-    this.authObj = $firebaseAuth(ref);
+    this.ref = new Firebase('https://emoment.firebaseio.com');
+    this.usersRef = this.ref.child('users');
+    this.authObj = $firebaseAuth(this.ref);
     this.location = $location;
   }
   authenticate() {
@@ -20,5 +20,9 @@ export class LoginController {
     }).catch(function(error) {
       console.error("Authentication failed:", error);
     });
+  }
+  unauthenticate() {
+    this.ref.unauth();
+    console.log('logged out');
   }
 }

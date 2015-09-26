@@ -1,5 +1,6 @@
 var main_controller_1 = require('./main/main.controller');
 var login_controller_1 = require('./components/login/login.controller');
+var lists_controller_1 = require('./components/moments/lists.controller');
 function routerConfig($stateProvider, $urlRouterProvider, $locationProvider) {
     $locationProvider.html5Mode({
         enabled: true,
@@ -15,7 +16,7 @@ function routerConfig($stateProvider, $urlRouterProvider, $locationProvider) {
         .state('moments', {
         url: '/moments',
         templateUrl: 'app/components/moments/fullList.html',
-        controller: '',
+        controller: lists_controller_1.ListsController,
         controllerAs: 'fl',
         bindToController: true
     })

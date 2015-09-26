@@ -1,7 +1,7 @@
 var Moments;
 (function (Moments) {
     var MainController = (function () {
-        function MainController($scope, $timeout, webDevTec, toastr, $mdUtil, $mdSidenav, $log, $mdDialog) {
+        function MainController($scope, $timeout, webDevTec, toastr, $mdUtil, $mdSidenav, $log, $mdDialog, $firebaseAuth) {
             this.awesomeThings = new Array();
             this.webDevTec = webDevTec;
             this.classAnimation = '';
@@ -12,11 +12,14 @@ var Moments;
             this.$log = $log;
             this.$mdDialog = $mdDialog;
             this.activate($timeout);
+            var ref = new Firebase('https://emoment.firebaseio.com');
+            this.twitter = ref.getAuth().twitter;
             $scope.showRecordDialog = function ($event) {
                 $mdDialog.show({
                     targetEvent: $event,
                     templateUrl: '/app/components/moments/recordDialog.html',
                     controller: 'RecordDialogController',
+                    controllerAs: 'create'
                 });
             };
         }

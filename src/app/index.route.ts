@@ -1,5 +1,6 @@
 import {Moments} from './main/main.controller';
 import {LoginController} from './components/login/login.controller';
+import {ListsController} from './components/moments/lists.controller';
 
 /** @ngInject */
 export function routerConfig($stateProvider: ng.ui.IStateProvider,
@@ -20,7 +21,7 @@ export function routerConfig($stateProvider: ng.ui.IStateProvider,
     .state('moments', {
       url: '/moments',
       templateUrl: 'app/components/moments/fullList.html',
-      controller: '',
+      controller: ListsController,
       controllerAs: 'fl',
       bindToController: true
     })

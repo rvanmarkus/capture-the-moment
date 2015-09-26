@@ -5,6 +5,7 @@ import { routerConfig } from './index.route';
 import { runBlock } from './index.run';
 import { Moments} from './main/main.controller';
 import { LoginController } from '../app/components/login/login.controller';
+import { ListsController } from '../app/components/moments/lists.controller';
 import { WebDevTecService } from '../app/components/webDevTec/webDevTec.service';
 import { acmeNavbar } from '../app/components/navbar/navbar.directive';
 import { emSidebar } from '../app/components/sidebar/sidebar.directive';
@@ -34,6 +35,7 @@ module emoment {
     .controller('MainController', Moments.MainController)
     .controller('SettingsController', SettingsController)
     .controller('LoginController', LoginController)
+    .controller('ListsController', ListsController)
     .directive('acmeNavbar', acmeNavbar)
     .directive('emSidebar', emSidebar)
 }
