@@ -11,6 +11,7 @@ import { acmeNavbar } from '../app/components/navbar/navbar.directive';
 import { emSidebar } from '../app/components/sidebar/sidebar.directive';
 import { SettingsController } from '../app/components/settings/settings.controller';
 import { AudioContextService, UserMediaProvider, convertFloat32ToInt16 } from './main/util.services';
+import {UserServices} from './main/user.services';
 
 import { recordMomentDialogController } from '../app/components/moments/recordDialog.controller'
 declare var moment: moment.MomentStatic;
@@ -22,6 +23,7 @@ module emoment {
     .constant('moment', moment)
     .config(config)
     .config(routerConfig)
+    .service('userServices', ['$firebaseAuth',UserServices])
     .config(function($mdThemingProvider) {
       $mdThemingProvider.theme('default')
         .primaryPalette('pink')

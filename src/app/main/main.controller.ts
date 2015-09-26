@@ -12,9 +12,10 @@ export namespace Moments {
     private $mdSidenav: any;
     private $log;
     public $mdDialog;
+    public twitter;
 
     /** @ngInject */
-    constructor ($scope:MainScope, $timeout: ng.ITimeoutService, webDevTec: WebDevTecService, toastr: any, $mdUtil: any, $mdSidenav: angular.material.ISidenavService, $log: ng.ILogService, $mdDialog: ng.material.IDialogService, $firebaseAuth)  {
+    constructor ($scope:MainScope, $timeout: ng.ITimeoutService, webDevTec: WebDevTecService, toastr: any, $mdUtil: any, $mdSidenav: angular.material.ISidenavService, $log: ng.ILogService, $mdDialog: ng.material.IDialogService, userServices)  {
       this.awesomeThings = new Array();
       this.webDevTec = webDevTec;
       this.classAnimation = '';
@@ -25,9 +26,7 @@ export namespace Moments {
       this.$mdDialog = $mdDialog;
       this.activate($timeout);
 
-      var ref = new Firebase('https://emoment.firebaseio.com');
-      this.emomentsRef = ref.child('users').child('emoments');
-      this.twitter = ref.getAuth().twitter;
+      this.twitter = userServices.getUser().twitter;
 
       $scope.showRecordDialog = function($event) {
         $mdDialog.show({

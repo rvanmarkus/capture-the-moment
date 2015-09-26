@@ -6,6 +6,7 @@ import {ListsController} from './components/moments/lists.controller';
 export function routerConfig($stateProvider: ng.ui.IStateProvider,
   $urlRouterProvider: ng.ui.IUrlRouterProvider, $locationProvider) {
 
+
   $locationProvider.html5Mode({
     enabled: true,
     requireBase: false
@@ -16,14 +17,15 @@ export function routerConfig($stateProvider: ng.ui.IStateProvider,
       url: '/',
       templateUrl: 'app/main/main.html',
       controller: Moments.MainController,
-      controllerAs: 'main'
+      controllerAs: 'main',
+
     })
     .state('moments', {
       url: '/moments',
       templateUrl: 'app/components/moments/fullList.html',
       controller: ListsController,
       controllerAs: 'fl',
-      bindToController: true
+      bindToController: true,
     })
     .state('settings', {
       url: '/settings',

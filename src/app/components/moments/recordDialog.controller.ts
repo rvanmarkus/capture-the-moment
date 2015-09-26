@@ -15,16 +15,15 @@ export class recordMomentDialogController {
   constructor($scope:recordDialogScope, $mdDialog:ng.material.IDialogService, userMediaProvider, audioContext, $timeout){
     this.audioContext = audioContext;
     this.getUserMediaProvider = userMediaProvider;
-
+    this.$scope = $scope;
 
     this.recordUserMedia();
-    $scope.hashtags = [];
-    
-    $scope.closeDialog=()=>{
+    this.$scope.hashtags = [];
+    this.$scope.closeDialog=()=>{
       $mdDialog.cancel();
-    }
+    };
 
-    this.$scope = $scope;
+
   }
 
   public recordUserMedia(){
