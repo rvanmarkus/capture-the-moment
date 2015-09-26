@@ -2,6 +2,7 @@
 export class LoginController {
   constructor($scope, userServices, $location, $mdToast: any){
     this.location = $location;
+    this.userServices = userServices;
 
     this.$mdToast = $mdToast;
     this.loginSuccessfull = function(){
@@ -9,14 +10,15 @@ export class LoginController {
         this.$mdToast.simple().content('Login Successfull!').hideDelay(2500);
        );
     }
-    this.userServices = userServices;
   }
   authenticate() {
     this.userServices.authenticate().then((user)=>{
       this.loginSuccessfull();
+    this.userServices.authenticate().then((user) => {
+      this.user = user;
       this.location.path('/');
     }).catch(function(error) {
-      console.error("Authentication failed:", error);
+      console.error("Nonononononon");
     });
   }
 }
