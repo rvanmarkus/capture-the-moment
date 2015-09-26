@@ -19,6 +19,7 @@ export class recordMomentDialogController {
 
     this.recordUserMedia();
     $scope.hashtags = [];
+    
     $scope.closeDialog=()=>{
       $mdDialog.cancel();
     }
