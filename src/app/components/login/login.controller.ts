@@ -7,7 +7,7 @@ export class LoginController {
     this.$mdToast = $mdToast;
     this.loginSuccessfull = function(){
       this.$mdToast.show(
-        this.$mdToast.simple().content('Login Successfull!').hideDelay(2500);
+        this.$mdToast.simple().content('Login Successfull!').hideDelay(2500)
        );
     }
   }
