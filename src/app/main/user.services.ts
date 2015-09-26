@@ -14,7 +14,7 @@ export function UserServices($firebaseAuth, user){
             "uid": this.authData.uid,
             "username": this.twitter.username,
             "displayName": this.twitter.displayName,
-            "profileImageURL": this.twitter.profileImageURL
+            "profilePicture": this.twitter.profileImageURL
       };
       usersRef.push(user);
       return user;
@@ -38,7 +38,7 @@ export function UserServices($firebaseAuth, user){
   };
 
   this.getUser = function(){
-    return this.user;
+    return user;
   };
 
   this.logout = function() {
@@ -56,6 +56,6 @@ export function UserServices($firebaseAuth, user){
     authObj : this.authObj,
     usersRef: usersRef,
     get: this.get,
-    emomentsRef: this.emomentsRef
+    emomentsRef: emomentsRef
   }
 }
