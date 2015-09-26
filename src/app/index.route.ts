@@ -3,8 +3,7 @@ import {LoginController} from './components/login/login.controller';
 import {ListsController} from './components/moments/lists.controller';
 
 /** @ngInject */
-export function routerConfig($stateProvider: ng.ui.IStateProvider,
-  $urlRouterProvider: ng.ui.IUrlRouterProvider, $locationProvider) {
+export function routerConfig($stateProvider: ng.ui.IStateProvider, $urlRouterProvider: ng.ui.IUrlRouterProvider, $locationProvider) {
 
 
   $locationProvider.html5Mode({

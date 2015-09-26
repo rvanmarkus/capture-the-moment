@@ -2,22 +2,18 @@
 export function UserServices($firebaseAuth){
   this.user = {};
   this.ref = new Firebase('https://emoment.firebaseio.com');
-
+  this.usersRef = this.ref.child('users');
+  this.emomentsRef = this.ref.child('emoments');
 
   this.authenticate = function() {
     return this.authObj.$authWithOAuthPopup('twitter').then((authData) => {
       this.user = authData;
       this.authData = authData;
-      this.usersRef.set({
-        uid: this.authData.uid,
-        username: this.user.twitter.username,
-        displayName: this.user.twitter.displayName,
-        profileImageURL: this.user.twitter.profileImageURL
-      });
+      this.usersRef.push(this.user);
       return this.user;
 
     }).catch(function(error) {
-      console.error("Authentication failed:", error);
+      console.error("Authentication failed: ", error);
     });
   };
 
