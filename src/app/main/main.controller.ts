@@ -26,10 +26,10 @@ export namespace Moments {
       this.activate($timeout);
 
       var ref = new Firebase('https://emoment.firebaseio.com');
+      this.emomentsRef = ref.child('users').child('emoments');
       this.twitter = ref.getAuth().twitter;
 
       $scope.showRecordDialog = function($event) {
-
         $mdDialog.show({
           targetEvent: $event,
           templateUrl:'/app/components/moments/recordDialog.html',
@@ -37,6 +37,7 @@ export namespace Moments {
           controllerAs: 'create'
         });
       }
+
     }
 
     /** @ngInject */
@@ -69,6 +70,15 @@ export namespace Moments {
 
     getWebDevTec() {
       this.awesomeThings = this.webDevTec.tec;
+    }
+
+    postEmoment() {
+      let timestamp = new Date().getTime();
+      this.emomentsRef.push({
+        title: title,
+        hashtags: [],
+        timestamp: timestamp
+      })
     }
   }
 }

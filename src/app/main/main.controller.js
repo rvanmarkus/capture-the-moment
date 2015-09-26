@@ -6,13 +6,13 @@ var Moments;
             this.webDevTec = webDevTec;
             this.classAnimation = '';
             this.creationDate = 1443021830401;
-            this.toastr = toastr;
             this.$mdUtil = $mdUtil;
             this.$mdSidenav = $mdSidenav;
             this.$log = $log;
             this.$mdDialog = $mdDialog;
             this.activate($timeout);
             var ref = new Firebase('https://emoment.firebaseio.com');
+            this.emomentsRef = ref.child('users').child('emoments');
             this.twitter = ref.getAuth().twitter;
             $scope.showRecordDialog = function ($event) {
                 $mdDialog.show({
@@ -48,6 +48,21 @@ var Moments;
         };
         MainController.prototype.getWebDevTec = function () {
             this.awesomeThings = this.webDevTec.tec;
+        };
+        MainController.prototype.fetchHashtag = function ($event) {
+            this.event = $event;
+            if ($event.which === 13)
+                console.log($scope);
+        };
+        MainController.prototype.postEmoment = function () {
+            var timestamp = new Date().getTime();
+            var title = $('#emoment-title').val();
+            console.log(title);
+            this.emomentsRef.push({
+                title: title,
+                hashtags: ['#Awesome', '#Winning'],
+                timestamp: timestamp
+            });
         };
         return MainController;
     })();
