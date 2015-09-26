@@ -26,8 +26,8 @@ module emoment {
     .service('userServices', ['$firebaseAuth', UserServices])
     .config(function($mdThemingProvider) {
       $mdThemingProvider.theme('default')
-        .primaryPalette('pink')
-        .accentPalette('orange');
+        .primaryPalette('red')
+        .accentPalette('teal');
     })
     .run(runBlock)
     .factory('audioContext', AudioContextService)

@@ -1,17 +1,18 @@
-<md-content>
-  <h1 style="text-align:center;">{{main.user.username}}</h1>
-  <p style="text-align:center;">Push the button to capture your moment</p>
-  <div class="outer-ring">
-    <div class='middle-ring' style="position: relative">
-      <md-button ng-click="showRecordDialog()" aria-label="Add new moment" class='md-fab magic-button' style="margin:20px auto;
-    width:280px;
-    height:280px;
-    display: block;
-    z-index: 33;
- background:#DD2C00" ></md-button>
+<md-content flex layout-fill layout="column" layout-align="center center">
+  <div>
+    <h1 style="text-align:center;">{{main.user.username}}</h1>
+
+    <div class="outer-ring">
+      <div class='middle-ring' style="position: relative;">
+        <md-button ng-click="showRecordDialog()" aria-label="Add new moment" class='md-fab magic-button md-primary' style="margin:20px auto;
+      width:280px;
+      height:280px;
+      display: block;
+      z-index: 33; border: 8px solid #D32F2F; border-radius: 100%"><div style="background: rgba(255,255,255,0.2); width:400px;height:200px;transform:rotate(60deg);position:relative;top:-100px;right:-50px"></div> </md-button>
+      </div>
     </div>
-  </div>
-  <div data-ng-show="error" class="text-danger">
-    <strong>{{error}}</strong>
+    <p style="text-align:center;">Push the button to capture your moment</p><div data-ng-show="error" class="text-danger">
+      <strong>{{error}}</strong>
+    </div>
   </div>
 </md-content>

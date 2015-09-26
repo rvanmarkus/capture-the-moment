@@ -21,6 +21,7 @@ export class recordMomentDialogController {
     this.recordUserMedia();
     this.$scope.hashtags = [];
     this.$scope.closeDialog=()=>{
+      console.log('awefgoaheronae uiawfeijbaweriubwa kafkawurbi');
       $mdDialog.cancel();
     };
     this.user = userServices.getUser();
@@ -30,10 +31,10 @@ export class recordMomentDialogController {
   public postEmoment() {
     let timestamp = new Date().getTime();
     this.emomentsRef.push({
-      profilePicture: this.user.profileImageURL,
-      title: 'sddsaf',
-      hashtags: this.$scope.hashtags,
-      timestamp: timestamp
+      'profilePicture': this.user.profileImageURL,
+      'fingerprint': this.$scope.currentMedia,
+      'hashtags': this.$scope.hashtags,
+      'timestamp': timestamp
     });
     this.$scope.closeDialog();
     this.$mdToast.show(

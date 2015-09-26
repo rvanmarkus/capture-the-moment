@@ -4,7 +4,7 @@ export function config($logProvider: ng.ILogProvider, $mdThemingProvider: angula
   $logProvider.debugEnabled(true);
 
   // set the default palette name
-  var defaultPalette = 'deep-orange';
+  var defaultPalette = 'red';
   // define a palette to darken the background of components
   var greyBackgroundMap = $mdThemingProvider.extendPalette(defaultPalette, {'A100': 'fafafa'});
 
@@ -15,9 +15,13 @@ export function config($logProvider: ng.ILogProvider, $mdThemingProvider: angula
   $mdThemingProvider
     .theme(defaultPalette)
     .primaryPalette(defaultPalette, {
-      'default' : 'A700',
-      'hue-1' : '400'
+    'default': '500', // by default use shade 400 from the pink palette for primary intentions
+    'hue-1': '100', // use shade 100 for the <code>md-hue-1</code> class
+    'hue-2': '700', // use shade 600 for the <code>md-hue-2</code> class
+    'hue-3': 'A100'
     })
-    .accentPalette('blue')
-    .backgroundPalette('grey-background');
+    .accentPalette('teal', {
+      'default': '500' // use shade 200 for default, and keep all other shades the same
+    })
+    .backgroundPalette('grey');
 }

@@ -1,22 +1,23 @@
-<md-sidenav layout="column" class="md-sidenav-left md-whiteframe-z2"  md-swipe-left="vm.toggleSidebar()" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" ng-if="! vm.state.is('login')">
-  <md-toolbar class="md-tall md-hue-2">
-    <span flex></span>
-    <div layout="column" class="md-toolbar-tools-bottom inset">
-      <span align="center"><img src="/assets/images/logo-emoment.svg" class="image" height="70" with="70" alt=""/></span>
+<md-sidenav layout="column" layout-fill class="md-sidenav-left md-whiteframe-z2"  md-swipe-left="vm.toggleSidebar()" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" ng-if="! vm.state.is('login')">
+  <md-toolbar class="md-tall md-accent">
+    <div layout="column">
+      <div id="emoment" style="background:url('/assets/images/logo-emoment.svg') no-repeat; width:510px; height:510px; position: relative; top:-140px;"></div>
       <div ng-bind="vm.user.user.twitter.displayName">Jan Jansen</div>
     </div>
   </md-toolbar>
-  <md-list flex>
+  
+  <md-list style="position: relative; bottom:20px; z-index: 1;">
     <md-item ng-repeat="item in vm.menu" layout="column" >
-      <a class="md-button" ng-href="{{item.link}}" ng-click="vm.toggleSidebar()">
+      <md-button class="md-button" ng-href="{{item.link}}" ng-click="vm.toggleSidebar()">
         <md-item-content md-ink-ripple layout="row" layout-align="start center">
           <div class="inset">
             <md-icon class="material-icons">{{item.icon}}</md-icon>
           </div>
-          <div class="inset">{{item.title}}
+          <div class="inset">
+            <h3>{{item.title}}</h3>
           </div>
         </md-item-content>
-      </a>
+      </md-button>
     </md-item>
   </md-list>
 </md-sidenav>

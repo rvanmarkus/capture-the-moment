@@ -11,12 +11,15 @@ export function UserServices($firebaseAuth, user, $scope){
       this.twitter = authData.twitter;
       this.authData = authData;
       this.user = {
-            "uid": this.authData.uid,
-            "username": this.twitter.username,
-            "displayName": this.twitter.displayName,
-            "profileImageURL": this.twitter.profileImageURL
+        "username": this.twitter.username,
+        "displayName": this.twitter.displayName,
+        "profileImageURL": this.twitter.profileImageURL,
+        "settings" : {
+          "notifications" : true,
+          "autocapture" : false
+        }
       }
-      this.usersRef.push(this.user);
+      this.usersRef.child(this.user.username).set(this.user);
       return this.user;
     }).catch(function(error) {
       console.log("Authentication failed: ", error);
