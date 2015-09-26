@@ -12,7 +12,7 @@ export class recordMomentDialogController {
   private $scope;
   private outputStream;
 
-  constructor($scope:recordDialogScope, $mdDialog:ng.material.IDialogService, userMediaProvider, audioContext, $timeout, $firebaseAuth, $mdToast: any){
+  constructor($scope:recordDialogScope, $mdDialog:ng.material.IDialogService, userMediaProvider, audioContext, $timeout, $firebaseAuth, $mdToast: any, userServices){
     this.$mdToast = $mdToast;
     this.audioContext = audioContext;
     this.getUserMediaProvider = userMediaProvider;
@@ -23,7 +23,7 @@ export class recordMomentDialogController {
     this.$scope.closeDialog=()=>{
       $mdDialog.cancel();
     };
-    this.twitter = userServices.user.twitter;
+    this.user = userServices.user.twitter;
 
   }
 
