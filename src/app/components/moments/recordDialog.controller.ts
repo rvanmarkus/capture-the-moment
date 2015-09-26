@@ -22,9 +22,6 @@ export class recordMomentDialogController {
     this.getUserMediaProvider = userMediaProvider;
     this.$scope = $scope;
     this.$mdDialog = $mdDialog;
-
-
-
     this.recordUserMedia();
     this.$scope.hashtags = [];
 
