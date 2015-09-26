@@ -1,13 +1,7 @@
 /** @ngInject */
-export function config($logProvider: ng.ILogProvider, toastrConfig: any, $mdThemingProvider: angular.material.IThemingProvider) {
+export function config($logProvider: ng.ILogProvider, $mdThemingProvider: angular.material.IThemingProvider) {
   // enable log
   $logProvider.debugEnabled(true);
-  // set options third-party lib
-  toastrConfig.allowHtml = true;
-  toastrConfig.timeOut = 3000;
-  toastrConfig.positionClass = 'toast-top-right';
-  toastrConfig.preventDuplicates = true;
-  toastrConfig.progressBar = true;
 
   // set the default palette name
   var defaultPalette = 'deep-orange';
@@ -26,5 +20,4 @@ export function config($logProvider: ng.ILogProvider, toastrConfig: any, $mdThem
     })
     .accentPalette('blue')
     .backgroundPalette('grey-background');
-
 }

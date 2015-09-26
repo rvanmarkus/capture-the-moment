@@ -1,7 +1,15 @@
 import {Moments} from './main/main.controller';
+import {LoginController} from './components/login/login.controller';
+import {ListsController} from './components/moments/lists.controller';
 
 /** @ngInject */
-export function routerConfig($stateProvider: ng.ui.IStateProvider, $urlRouterProvider: ng.ui.IUrlRouterProvider) {
+export function routerConfig($stateProvider: ng.ui.IStateProvider,
+  $urlRouterProvider: ng.ui.IUrlRouterProvider, $locationProvider) {
+
+  $locationProvider.html5Mode({
+    enabled: true,
+    requireBase: false
+  });
 
   $stateProvider
     .state('home', {
@@ -13,15 +21,22 @@ export function routerConfig($stateProvider: ng.ui.IStateProvider, $urlRouterPro
     .state('moments', {
       url: '/moments',
       templateUrl: 'app/components/moments/fullList.html',
-      controller: '',
+      controller: ListsController,
       controllerAs: 'fl',
       bindToController: true
     })
     .state('settings', {
       url: '/settings',
       templateUrl: 'app/components/settings/settings.html',
-      controller: ''
+      controller: 'SettingsController',
+      controllerAs: 'settings',
+    })
+    .state('login', {
+      url: '/login',
+      templateUrl: 'app/components/login/login.html',
+      controller: LoginController,
+      controllerAs: 'login',
+      bindToController: true
     });
-
   $urlRouterProvider.otherwise('/');
 }

@@ -2,8 +2,10 @@
   "name": "emoment",
   "version": "0.0.0",
   "dependencies": {
-    "binaryjs": "^0.2.1",
     "concat-stream": "^1.5.0"
+    "binaryjs": "^0.2.1",
+    "angularfire": "^1.1.2",
+    "firebase": "^2.3.0"
   },
   "scripts": {
     "test": "gulp test"

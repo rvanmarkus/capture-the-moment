@@ -1,4 +1,4 @@
-<md-sidenav layout="column" class="md-sidenav-left md-whiteframe-z2"  md-swipe-left="close" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')">
+<md-sidenav layout="column" class="md-sidenav-left md-whiteframe-z2"  md-swipe-left="vm.toggleSidebar()" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')">
   <md-toolbar class="md-tall md-hue-2">
     <span flex></span>
     <div layout="column" class="md-toolbar-tools-bottom inset">
@@ -8,7 +8,7 @@
   </md-toolbar>
   <md-list>
     <md-item ng-repeat="item in vm.menu" layout="column" >
-      <a class="md-button" ng-href="{{item.link}}">
+      <a class="md-button" ng-href="{{item.link}}" ng-click="vm.toggleSidebar()">
         <md-item-content md-ink-ripple layout="row" layout-align="start center">
           <div class="inset">
             <md-icon class="material-icons">{{item.icon}}</md-icon>
@@ -17,9 +17,6 @@
           </div>
         </md-item-content>
       </a>
-    </md-item>
-    <md-item>
-      <md-button ng-click="close()">close</md-button>
     </md-item>
   </md-list>
 </md-sidenav>

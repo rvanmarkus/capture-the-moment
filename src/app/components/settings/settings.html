@@ -1,26 +1,34 @@
 <md-content>
   <md-list>
+  
     <md-subheader>General</md-subheader>
-    <md-list-item>
-      <md-icon md-svg-icon="bleh"></md-icon>
-      <p>Test setting</p>
-      <md-switch class="md-secondary" ng-model="setting1.enabled"></md-switch>
-    </md-list-item>
-    <md-list-item>
-      <md-icon md-svg-icon="bleh"></md-icon>
-      <p>Test setting</p>
-      <md-switch class="md-secondary" ng-model="setting2.enabled"></md-switch>
-    </md-list-item>
+    <md-list-item ng-repeat="item in settings.settings">
+      <p>{{item.name}}</p>
+      <md-switch aria-label="{{item.name}}" ng-model="item.state" ng-change="showSimpleToast(item);"></md-switch>
+    </md-list-item>  
+
     <md-subheader>Account</md-subheader>
-    <md-list-item>
-      <md-icon md-svg-icon="bleh"></md-icon>
-      <p>Test setting</p>
-      <md-switch class="md-secondary" ng-model="setting3.enabled"></md-switch>
+    <md-list-item ng-click="deleteHistory()">
+      <p>Delete account history</p>
     </md-list-item>
-    <md-list-item>
-      <md-icon md-svg-icon="bleh"></md-icon>
-      <p>Test setting</p>
-      <md-switch class="md-secondary" ng-model="setting4.enabled"></md-switch>
+    <md-list-item ng-click="logout()">
+      <p>Log out</p>
     </md-list-item>
+
+    <md-subheader>Support</md-subheader>
+    <md-list-item ng-click="showTermsAndConditions()">
+      <p>Terms & Conditions</p>
+    </md-list-item>
+
+    <md-list-item ng-click="reportError()">
+      <p>Report Error</p>
+    </md-list-item>
+
+    <md-list-item>
+      <p>Version</p>
+      <small>beta 0.1</small>
+    </md-list-item>
+
+
   </md-list>
 </md-content>

@@ -27,32 +27,29 @@ class SidebarController {
     this.menu = [
       {
         title: 'Home',
-        icon: 'add_circle',
+        icon: 'album',
         link: '/'
       },
       {
         title: 'Moments',
         icon: 'settings_backup_restore',
-        link: '#/moments'
+        link: '/moments'
       },
       {
         title: 'Settings',
         icon: 'settings',
-        link: '#/settings'
+        link: '/settings'
       },
       {
         title: 'Logout',
         icon: 'account_circle',
-        link: '#/login'
+        link: '/login'
       }
     ]
   }
 
-  $scope.close = function() {
-    $mdSidenav('left').close()
-      .then(function() {
-        $log.debug("close LEFT is done");
-      });
-  };
+  toggleSidebar() {
+    this.$mdSidenav('left').toggle();
+  }
 
 }
