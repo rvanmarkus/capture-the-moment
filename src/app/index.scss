@@ -77,6 +77,15 @@ html {
   margin-top: 10px;
   margin-bottom: 10px; }
 
+.md-virtual-repeat-container .md-virtual-repeat-offsetter {
+  box-sizing: border-box;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  right: 0;
+  top: 0; }
+
 
 /**
  *  Do not remove the comment below. It's the markers used by gulp-inject to inject

@@ -8,9 +8,6 @@ export function MomentsFactory($firebaseArray, FIREBASE_URL, userServices, $q) {
     },
     getAllMoments: function() {
       return  $firebaseArray(ref.child('emoments'));
-    },
-    getAllUserMoments: function(userId){
-      return $firebaseArray(ref.child('emoments').orderByChild('user').startAt(userId).endAt(userId)) ;
     }
   };
 
