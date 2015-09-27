@@ -1,10 +1,9 @@
-<md-content>
+<md-content layout-fill flex>
   <md-list>
-  
     <md-subheader>General</md-subheader>
     <md-list-item ng-repeat="item in settings.settings">
       <p>{{item.name}}</p>
-      <md-switch aria-label="{{item.name}}" ng-model="item.state" ng-change="showSimpleToast(item);"></md-switch>
+      <md-switch aria-label="{{item.name}}" ng-model="item.state" ng-bind="userSettings" ng-change="showSimpleToast(item);"></md-switch>
     </md-list-item>  
 
     <md-subheader>Account</md-subheader>

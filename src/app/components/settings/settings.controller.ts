@@ -14,16 +14,9 @@ export class SettingsController {
     this.$mdToast = $mdToast;
     this.$scope = $scope;
     this.$log = $log;
-    this.settings = [
-      {
-        name: 'Notifications',
-        state: true
-      },
-      {
-        name: 'Capture on startup',
-        state: false
-      }
-    ];
+    this.user = userServices.getUser();
+    this.settings = userServices.getUserSettings();
+    
     $scope.showTermsAndConditions = function($event) {
       $mdDialog.show(
         $mdDialog.alert()
@@ -50,7 +43,7 @@ export class SettingsController {
     $scope.reportError = function() {
       console.log('button for report error clicked')
     }
-
+    
 
   }
 

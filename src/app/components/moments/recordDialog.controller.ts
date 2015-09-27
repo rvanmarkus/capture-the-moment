@@ -33,6 +33,7 @@ export class recordMomentDialogController {
     this.getMetaData();
     let timestamp = new Date().getTime();
     this.emomentsRef.push({
+      'user': this.user.username,
       'profilePicture': this.user.profilePicture,
       'fingerprint': this.$scope.currentMedia,
       'hashtags': this.$scope.hashtags,

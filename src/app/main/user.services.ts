@@ -48,6 +48,10 @@ export function UserServices($firebaseAuth, user){
     ref.unauth();
   }
 
+  this.getUserSettings = function () {
+    return this.get(this.twitter.username).child('settings');
+  }
+
   return {
     authenticate: this.authenticate,
     getUser: this.getUser,
@@ -59,6 +63,7 @@ export function UserServices($firebaseAuth, user){
     authObj : this.authObj,
     usersRef: usersRef,
     get: this.get,
-    emomentsRef: emomentsRef
+    emomentsRef: emomentsRef,
+    getUserSettings: this.getUserSetting
   }
 }
