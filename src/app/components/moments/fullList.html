@@ -3,9 +3,11 @@
     <md-tab id="mymoments" flex>
       <md-tab-label flex>MyMoments</md-tab-label>
       <md-tab-body>
-        <md-progress-circular ng-if="fl.loading" md-mode="indeterminate"></md-progress-circular>
+        <md-content layout="column" layout-align="start center" >
+          <md-progress-circular ng-if="fl.loading" md-mode="indeterminate"></md-progress-circular>
+        </md-content>
         <md-list>
-          <md-list-item class="md-3-line" ng-repeat="post in usermoments | orderBy:'timestamp':true">
+          <md-list-item class="md-3-line" ng-repeat="post in fl.usermoments | orderBy:'timestamp':true">
             <img ng-src="{{post.profilePicture}}" class="md-avatar" alt="{{post.username}}" />
             <div class="md-list-item-text" layout="column">
               <h3>{{post.fingerprint}}</h3>
@@ -26,7 +28,7 @@
       <md-tab-label flex>WorldMoments</md-tab-label>
       <md-tab-body>
         <md-list>
-          <md-list-item class="md-3-line" ng-repeat="post in friendsmoments | orderBy: 'timestamp':true">
+          <md-list-item class="md-3-line" ng-repeat="post in fl.friendsmoments | orderBy: 'timestamp':true">
             <img ng-src="{{post.profilePicture}}" class="md-avatar" alt="{{post.username}}" />
             <div class="md-list-item-text" layout="column">
               <h3>{{post.fingerprint}}</h3>

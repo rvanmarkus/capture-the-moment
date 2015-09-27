@@ -1,13 +1,19 @@
 /** @ngInject */
 export class ListsController {
-  public loading;
-  constructor($scope, $firebaseAuth, $location, momentsFactory, userServices){
+  public loading = true;
+  public usermoments;
+  public friendsmoments;
 
-    $scope.user = userServices.getUser();
-    $scope.usermoments = momentsFactory.getAllUserMoments($scope.user.username);
-    $scope.friendsmoments = momentsFactory.getAllMoments().$loaded().then((shit) => {
+  public user;
+
+  constructor($scope, $firebaseAuth, $location, momentsFactory, userServices){
+    this.user = userServices.getUser();
+    this.usermoments = momentsFactory.getAllUserMoments(this.user.username);
+    this.friendsmoments = momentsFactory.getAllMoments();
+
+    //disable loading icon
+    momentsFactory.getAllMoments().$loaded().then(() => {
       this.loading = false;
-      return shit;
     });
   }
 }
