@@ -11,12 +11,15 @@ export function UserServices($firebaseAuth, user){
       this.twitter = authData.twitter;
       this.authData = authData;
       user = {
-            "uid": this.authData.uid,
-            "username": this.twitter.username,
-            "displayName": this.twitter.displayName,
-            "profilePicture": this.twitter.profileImageURL
+        "username": this.twitter.username,
+        "displayName": this.twitter.displayName,
+        "profilePicture": this.twitter.profileImageURL,
+        "settings": {
+          "notifications": true,
+          "autocapture": false
+        }
       };
-      usersRef.push(user);
+      usersRef.child(this.twitter.username).set(user)
       return user;
 
     }).catch(function(error) {
