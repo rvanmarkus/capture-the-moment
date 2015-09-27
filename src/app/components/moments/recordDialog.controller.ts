@@ -17,10 +17,16 @@ export class recordMomentDialogController {
   private emomentsRef;
   private beatgridSyncIsStarted;
   private beatgridHistoryStack;
+  private mediaFound;
+  private Spotify;
+  public latestSong;
+  private fitler;
+  private $filter : ng.IFilterService;
+  private currentMedia;
 
-  public static BEATGRID_STARTED = 'Fingerprint store prepared';
 
-  constructor($scope:recordDialogScope, $mdDialog:ng.material.IDialogService, userMediaProvider, audioContext, $timeout, $firebaseAuth, $mdToast: any, userServices){
+
+  constructor($scope:recordDialogScope, $mdDialog:ng.material.IDialogService, userMediaProvider, audioContext, $timeout, $firebaseAuth, $mdToast: any, userServices, Spotify, $filter:ng.IFilterService){
     this.$mdToast = $mdToast;
     this.audioContext = audioContext;
     this.getUserMediaProvider = userMediaProvider;
@@ -28,13 +34,15 @@ export class recordMomentDialogController {
     this.$mdDialog = $mdDialog;
     this.recordUserMedia();
     this.$scope.hashtags = [];
+    this.$filter = $filter;
     this.user = userServices.getUser();
     this.emomentsRef = userServices.emomentsRef;
 
     this.beatgridSyncIsStarted = false;
     this.beatgridHistoryStack = [];
-
-
+    this.mediaFound = false;
+    this.latestSong = '';
+    this.Spotify = Spotify;
   }
 
   public postEmoment() {
@@ -62,25 +70,44 @@ export class recordMomentDialogController {
     for (var i = 0; i < hellNawh.length; i++) {
       meh.push(hellNawh[i].trim());
     }
+
+
     return {
       'timestamp': meh[0],
       'timeAgo': meh[1],
-      'song': meh[2],
-      'random': meh[3]
+      'song': meh[2].split('.cas')[0].split('test/')[1],
+      'tijdstip': msToTime(meh[3])
     };
 
   }
 
   public processBeatgridData(data) {
-      this.$scope.currentMedia = data;
       if(! this.beatgridSyncIsStarted){
-        if(data == recordMomentDialogController.BEATGRID_STARTED_IDENTIFIER){
-            alert('ready');
+        var whenBeatgridIsStartedOutputTest = /Fingerprint store prepared/;
+        if(whenBeatgridIsStartedOutputTest.test(data)){
+            this.beatgridSyncIsStarted = true;
         }
+        return;
       }
-      this.$scope.$apply();
-      console.log(data);
       this.beatgridHistoryStack.push(data);
+
+      this.currentMedia = recordMomentDialogController.getMetaData(data);
+      if(! this.mediaFound){
+        this.Spotify.search(this.currentMedia.song, 'track').then((results) => {
+          console.log('results',results);
+          var imageList = _.first(_.pluck(_.pluck(results.tracks.items, 'album'), 'images'));
+          console.log('in promis',imageList);
+          var image = (imageList != undefined) ? _.first(imageList): false;
+          if(image){
+            this.currentMedia.cover = image.url;
+            return image.url;
+          }
+        });
+
+      }
+
+      this.$scope.$apply();
+      this.mediaFound = true;
     }
 
 
@@ -101,7 +128,7 @@ export class recordMomentDialogController {
     client.on('stream', (stream, meta) => {
 
       // collect stream data
-      stream.on('data', this.processBeatgridData);
+      stream.on('data',(data) => this.processBeatgridData(data))  ;
       stream.on('end', ()=>{
         console.dir(new Blob(this.beatgridHistoryStack));
       });
@@ -148,4 +175,16 @@ function convertFloat32ToInt16(buffer) {
     buf[l] = Math.min(1, buffer[l])*0x7FFF;
   }
   return buf.buffer;
+}
+function msToTime(duration) {
+  var milliseconds = parseInt((duration%1000)/100)
+    , seconds = parseInt((duration/1000)%60)
+    , minutes = parseInt((duration/(1000*60))%60)
+    , hours = parseInt((duration/(1000*60*60))%24);
+
+  hours = (hours < 10) ? "0" + hours : hours;
+  minutes = (minutes < 10) ? "0" + minutes : minutes;
+  seconds = (seconds < 10) ? "0" + seconds : seconds;
+
+  return minutes + ":" + seconds;
 }

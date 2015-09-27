@@ -8,11 +8,19 @@
   <md-dialog-content>
     <section class="section slim">
       <div layout="row" layout-align="center center">
-        <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+        <md-progress-circular ng-if="! create.mediaFound" md-mode="indeterminate"></md-progress-circular>
       </div>
-      <p>We're in our time machine searching for you moment...</p>
+      <p ng-if="! create.mediaFound">We're in our time machine searching for you moment...</p>
+      <strong ng-if="create.mediaFound">We found this in our database:</strong>
+      <md-list-item class="md-3-line" ng-if="create.mediaFound">
+        <img ng-src="{{create.currentMedia.cover}}" class="md-avatar"/>
+        <div class="md-list-item-text" layout="column">
+          <h3>{{create.currentMedia.song}}</h3>
+          <h4><b>{{create.currentMedia.tijdstip}}</b></h4>
+        </div>
+      </md-list-item>
       <hr/>
-      <strong ng-bind="currentMedia"></strong>
+
     </section>
 
     <form name="createForm">
@@ -35,7 +43,6 @@
       <div class="md-actions" layout="row">
         <span flex></span>
         <md-button ng-click="create.closeDialog()">Cancel</md-button>
-        <md-button ng-click="create.getMetaData()">Meta</md-button>
         <md-button ng-disabled="createForm.$invalid" ng-click="create.postEmoment()" class="md-primary md-raised">
           Create moment
         </md-button>
