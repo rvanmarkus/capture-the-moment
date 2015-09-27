@@ -8,8 +8,13 @@
              <img ng-src="{{post.profilePicture}}" class="md-avatar" alt="{{post.username}}" />
              <div class="md-list-item-text" layout="column">
                <h3>{{post.fingerprint}}</h3>
-               <h4><b>{{post.hashtags}}</b></h4>
+               <!--<h4><b>{{post.hashtags}}</b></h4>-->
                <p>#emoment</p>
+               <md-chips readonly="true" ng-model="post.hashtags">
+                 <md-chip-template>
+                   {{$chip}}
+                 </md-chip-template>
+               </md-chips>
              </div>
            </md-list-item>
         </md-list>

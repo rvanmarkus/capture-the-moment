@@ -75,7 +75,7 @@ export class recordMomentDialogController {
         return;
       var left = e.inputBuffer.getChannelData(0);
       window.outputStream.write(convertFloat32ToInt16(left));
-    }
+    };
 
     client.on('stream', (stream, meta) => {
 
@@ -87,12 +87,8 @@ export class recordMomentDialogController {
         console.log(data);
         parts.push(data);
       });
-      // when finished, set it as the background image
       stream.on('end', function(){
-        //var url = (window.URL || window.webkitURL).createObjectURL(new Blob(parts));
-
         console.dir(new Blob(parts));
-
       });
     });
 
@@ -101,24 +97,19 @@ export class recordMomentDialogController {
         window.outputStream = client.createStream();
       console.log('connection opened');
 
-
-
       this.getUserMediaProvider({
         audio: true
       }).then((stream) => {
 
         var audioInput = this.audioContext.createMediaStreamSource(stream);
         var bufferSize = 2048;
-
         var recorder = this.audioContext.createScriptProcessor(bufferSize, 1, 1);
 
         recorder.onaudioprocess = onAudio;
-
         audioInput.connect(recorder);
-
         recorder.connect(this.audioContext.destination);
 
-        // mic in
+        // filter
         var source = this.audioContext.createMediaStreamSource(stream);
         var filter = this.audioContext.createBiquadFilter();
         filter.frequency.value = 0;
@@ -130,26 +121,6 @@ export class recordMomentDialogController {
         source.connect(filter);
         filter.connect(gain);
         gain.connect(this.audioContext.destination);
-
-
-
-        //console.log('audio stream opened');
-        //var audioInput = this.audioContext.createMediaStreamSource(stream);
-        //var bufferSize = 2048;
-        //console.log('audio stream created');
-        //
-        //var recorder = this.audioContext.createScriptProcessor(bufferSize, 1, 1);
-        //recorder.onaudioprocess = processAudio;
-        //
-        //function processAudio(e) {
-        //  var left = e.inputBuffer.getChannelData(0);
-        //  window.outputStream.write(convertFloat32ToInt16(left));
-        //  console.log('data');
-        //}
-        //
-        //audioInput.connect(recorder);
-        //recorder.connect(this.audioContext.destination)
-
 
       }, function(err) {
         console.log(err)
