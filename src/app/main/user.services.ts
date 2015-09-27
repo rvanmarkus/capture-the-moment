@@ -1,5 +1,5 @@
 /** @ngInject */
-export function UserServices($firebaseAuth, user){
+export function UserServices($firebaseObject, $firebaseAuth, user){
   var ref = new Firebase('https://emoment.firebaseio.com');
   var usersRef = ref.child('users');
   var emomentsRef = ref.child('emoments');
@@ -27,17 +27,12 @@ export function UserServices($firebaseAuth, user){
     });
   };
 
-  this.getAllMoments = function(){
-    //all moments voor user ophalen en returnen
-      return $firebaseArray(ref);
-  };
-
   this.userIsLoggedIn = function(){
     return this.authData;
   };
 
   this.get = (userId)=> {
-    return $firebase(ref.child('users').child(userId)).$asObject();
+    return $firebaseObject(ref.child('users').child(userId));
   };
 
   this.getUser = function(){
@@ -64,6 +59,6 @@ export function UserServices($firebaseAuth, user){
     usersRef: usersRef,
     get: this.get,
     emomentsRef: emomentsRef,
-    getUserSettings: this.getUserSetting
+    getUserSettings: this.getUserSettings
   }
 }
