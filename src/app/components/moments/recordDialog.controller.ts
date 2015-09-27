@@ -15,6 +15,10 @@ export class recordMomentDialogController {
   private $mdToast;
   private user;
   private emomentsRef;
+  private beatgridSyncIsStarted;
+  private beatgridHistoryStack;
+
+  public static BEATGRID_STARTED = 'Fingerprint store prepared';
 
   constructor($scope:recordDialogScope, $mdDialog:ng.material.IDialogService, userMediaProvider, audioContext, $timeout, $firebaseAuth, $mdToast: any, userServices){
     this.$mdToast = $mdToast;
@@ -24,9 +28,13 @@ export class recordMomentDialogController {
     this.$mdDialog = $mdDialog;
     this.recordUserMedia();
     this.$scope.hashtags = [];
-
     this.user = userServices.getUser();
     this.emomentsRef = userServices.emomentsRef;
+
+    this.beatgridSyncIsStarted = false;
+    this.beatgridHistoryStack = [];
+
+
   }
 
   public postEmoment() {
@@ -45,8 +53,8 @@ export class recordMomentDialogController {
     );
   }
 
-  public getMetaData(){
-    const yoMama = '1443295586, 5, test/Qtier - Set Me On (David August Remix).cas, 111440';
+  static getMetaData(yoMama = '1443295586, 5, test/Qtier - Set Me On (David August Remix).cas, 111440'){
+
     yoMama.split(',');
     // GET IT?!
     const meh = [];
@@ -54,15 +62,27 @@ export class recordMomentDialogController {
     for (var i = 0; i < hellNawh.length; i++) {
       meh.push(hellNawh[i].trim());
     }
-
-    var metaObject = {
+    return {
       'timestamp': meh[0],
       'timeAgo': meh[1],
       'song': meh[2],
       'random': meh[3]
     };
-    console.log('metaObject', metaObject);
+
   }
+
+  public processBeatgridData(data) {
+      this.$scope.currentMedia = data;
+      if(! this.beatgridSyncIsStarted){
+        if(data == recordMomentDialogController.BEATGRID_STARTED_IDENTIFIER){
+            alert('ready');
+        }
+      }
+      this.$scope.$apply();
+      console.log(data);
+      this.beatgridHistoryStack.push(data);
+    }
+
 
   public closeDialog(){
     this.$mdDialog.cancel();
@@ -81,22 +101,14 @@ export class recordMomentDialogController {
     client.on('stream', (stream, meta) => {
 
       // collect stream data
-      var parts = [];
-      stream.on('data', (data) =>{
-        this.$scope.currentMedia = data;
-        this.$scope.$apply();
-        console.log(data);
-        parts.push(data);
-      });
-      stream.on('end', function(){
-        console.dir(new Blob(parts));
+      stream.on('data', this.processBeatgridData);
+      stream.on('end', ()=>{
+        console.dir(new Blob(this.beatgridHistoryStack));
       });
     });
-
-
     client.on('open',()=> {
         window.outputStream = client.createStream();
-      console.log('connection opened');
+        console.log('connection opened');
 
       this.getUserMediaProvider({
         audio: true

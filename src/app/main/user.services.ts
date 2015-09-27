@@ -1,5 +1,5 @@
 /** @ngInject */
-export function UserServices($firebaseAuth, $firebaseObject, user){
+export function UserServices($firebaseObject, $firebaseAuth, user){
   var ref = new Firebase('https://emoment.firebaseio.com');
   var usersRef = ref.child('users');
   var emomentsRef = ref.child('emoments');
@@ -24,11 +24,6 @@ export function UserServices($firebaseAuth, $firebaseObject, user){
     }).catch(function(error) {
       console.log("Authentication failed: ", error);
     });
-  };
-
-  this.getAllMoments = function(){
-    //all moments voor user ophalen en returnen
-      return $firebaseArray(ref);
   };
 
   this.userIsLoggedIn = function(){
@@ -63,7 +58,6 @@ export function UserServices($firebaseAuth, $firebaseObject, user){
     usersRef: usersRef,
     get: this.get,
     emomentsRef: emomentsRef,
-    userSettings: this.userSettings
-
+    getUserSettings: this.getUserSettings
   }
 }

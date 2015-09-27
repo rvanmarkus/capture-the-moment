@@ -19,12 +19,12 @@ declare var moment: moment.MomentStatic;
 module emoment {
   'use strict';
 
-  angular.module('emoment', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ngMessages', 'ngAria', 'ui.router', 'ngMaterial', 'firebase'])
+  angular.module('emoment', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ngMessages', 'ngAria', 'ui.router', 'ngMaterial', 'firebase','yaru22.angular-timeago'])
     .constant('moment', moment)
     .constant('FIREBASE_URL', 'https://emoment.firebaseio.com/')
     .config(config)
     .config(routerConfig)
-    .service('userServices', ['$firebaseAuth', '$firebaseObject', UserServices])
+    .service('userServices', ['$firebaseObject', '$firebaseAuth', UserServices])
     .run(runBlock)
     .config(function($mdThemingProvider) {
       $mdThemingProvider.theme('default')
