@@ -4,19 +4,19 @@
       <md-tab-label flex>MyMoments</md-tab-label>
       <md-tab-body>
         <md-list>
-           <md-list-item class="md-3-line" ng-repeat="post in usermoments">
-             <img ng-src="{{post.profilePicture}}" class="md-avatar" alt="{{post.username}}" />
-             <div class="md-list-item-text" layout="column">
-               <h3>{{post.fingerprint}}</h3>
-               <!--<h4><b>{{post.hashtags}}</b></h4>-->
-               <p>#emoment</p>
-               <md-chips readonly="true" ng-model="post.hashtags">
-                 <md-chip-template>
-                   {{$chip}}
-                 </md-chip-template>
-               </md-chips>
-             </div>
-           </md-list-item>
+          <md-list-item class="md-3-line" ng-repeat="post in usermoments">
+            <img ng-src="{{post.profilePicture}}" class="md-avatar" alt="{{post.username}}" />
+            <div class="md-list-item-text" layout="column">
+              <h3>{{post.fingerprint}}</h3>
+              <!--<h4><b>{{post.hashtags}}</b></h4>-->
+              <p>#emoment</p>
+              <md-chips readonly="true" ng-model="post.hashtags">
+                <md-chip-template>
+                  {{$chip}}
+                </md-chip-template>
+              </md-chips>
+            </div>
+          </md-list-item>
         </md-list>
       </md-tab-body>
     </md-tab>
@@ -25,14 +25,14 @@
       <md-tab-label flex>WorldMoments</md-tab-label>
       <md-tab-body>
         <md-list>
-           <md-list-item md-virtual-repeat="post in friendsmoments | orderBy : 'timestamp':true" md-on-demand class="repeated-item md-3-line" flex>
-             <img ng-src="{{post.profileImageURL}}" class="md-avatar" alt="{{post.username}}" />
-             <div class="md-list-item-text" layout="column">
-               <h3>{{post.username}}</h3>
-               <h4><b>{{post.hashtags}}</b></h4>
-               <p>#emoment</p>
-             </div>
-           </md-list-item>
+          <md-list-item md-virtual-repeat="post in friendsmoments | orderBy" md-on-demand class="repeated-item md-3-line" flex>
+            <img ng-src="{{post.profileImageURL}}" class="md-avatar" alt="{{post.username}}" />
+            <div class="md-list-item-text" layout="column">
+              <h3>{{post.username}}</h3>
+              <h4><b>{{post.hashtags}}</b></h4>
+              <p>#emoment</p>
+            </div>
+          </md-list-item>
         </md-list>
       </md-tab-body>
     </md-tab>
