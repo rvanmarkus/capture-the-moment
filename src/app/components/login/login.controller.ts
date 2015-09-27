@@ -8,6 +8,7 @@ export class LoginController {
     this.location = $location;
     this.userServices = userServices;
     this.$mdToast = $mdToast;
+    
   }
 
   loginSuccessfull() {

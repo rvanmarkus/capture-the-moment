@@ -63,7 +63,6 @@ export function UserServices($firebaseAuth, user){
     authObj : this.authObj,
     usersRef: usersRef,
     get: this.get,
-    emomentsRef: emomentsRef,
-    getUserSettings: this.getUserSetting
+    emomentsRef: emomentsRef
   }
 }

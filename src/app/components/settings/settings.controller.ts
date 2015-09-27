@@ -9,13 +9,15 @@ export class SettingsController {
 
 
   /** @ngInject */
-  constructor($scope: ng.IScope, $timeout: ng.ITimeoutService, $log: ng.ILogService, $mdToast: any, $mdDialog: ng.material.IDialogService, userServices) {
+  constructor($scope: ng.IScope, $timeout: ng.ITimeoutService, $log: ng.ILogService, $mdToast: any, $mdDialog: ng.material.IDialogService, userServices, $firebaseAuth) {
     this.userServices = userServices;
     this.$mdToast = $mdToast;
     this.$scope = $scope;
     this.$log = $log;
     this.user = userServices.getUser();
-    this.settings = userServices.getUserSettings();
+    console.log(this.user.settings);
+    $scope.settings = this.user.settings;
+
     
     $scope.showTermsAndConditions = function($event) {
       $mdDialog.show(

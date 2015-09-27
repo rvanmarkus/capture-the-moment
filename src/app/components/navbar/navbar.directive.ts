@@ -10,6 +10,7 @@ export function acmeNavbar(): ng.IDirective {
     controller: NavbarController,
     controllerAs: 'vm',
     bindToController: true
+
   };
 }
 
@@ -19,9 +20,10 @@ export class NavbarController {
   public creationDate: number;
   private $mdSidenav : angular.material.ISidenavService;
 
-  constructor(moment: moment.MomentStatic, $mdSidenav: angular.material.ISidenavService) {
+  constructor(moment: moment.MomentStatic, $mdSidenav: angular.material.ISidenavService, userServices) {
     this.relativeDate = moment(this.creationDate).fromNow();
     this.$mdSidenav = $mdSidenav;
+    this.userServices = userServices;
   }
 
   toggleSidebar(){

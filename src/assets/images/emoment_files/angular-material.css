@@ -7251,7 +7251,7 @@ md-tooltip {
     margin: 0;
     padding: 0;
     position: absolute;
-    right: 16px;
+    right: 0;
     top: 0; }
 
 .md-virtual-repeat-container.md-orient-horizontal .md-virtual-repeat-scroller {

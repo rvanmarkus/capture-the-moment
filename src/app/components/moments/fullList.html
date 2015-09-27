@@ -1,7 +1,7 @@
 <md-virtual-repeat-container flex layout='column' layout-fill>
-  <md-tabs md-dynamic-height='true' flex>
-    <md-tab id="mymoments" md-stretch-tabs="always">
-      <md-tab-label>MyMoments</md-tab-label>
+  <md-tabs md-dynamic-height='true' layout-fill flex md-stretch-tabs="always" class="md-primary">
+    <md-tab id="mymoments" flex>
+      <md-tab-label flex>MyMoments</md-tab-label>
       <md-tab-body>
         <md-list>
            <md-list-item class="md-3-line" ng-repeat="post in usermoments">
@@ -21,7 +21,7 @@
       </md-tab-body>
     </md-tab>
 
-    <md-tab id="worldmoments" md-stretch-tabs="always">
+    <md-tab id="worldmoments" flex>
       <md-tab-label flex>WorldMoments</md-tab-label>
       <md-tab-body>
         <md-list>
