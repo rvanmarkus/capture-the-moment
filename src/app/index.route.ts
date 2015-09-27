@@ -20,7 +20,7 @@ export function routerConfig($stateProvider: ng.ui.IStateProvider, $urlRouterPro
       resolve: {
         "currentAuth": ["userServices", function (userServices) {
           // $waitForAuth returns a promise so the resolve waits for it to complete
-          return userServices.authObj;
+          return userServices.authObj.$waitForAuth;
         }]
       }
 

@@ -46,14 +46,19 @@ export class recordMomentDialogController {
   }
 
   public postEmoment() {
-    this.getMetaData();
     let timestamp = new Date().getTime();
+    if(this.currentMedia.song){
+      var title = this.currentMedia.song;
+    } else {
+      var title = 'Unrecognized music';
+    }
     this.emomentsRef.push({
       'user': this.user.username,
       'profilePicture': this.user.profilePicture,
-      'fingerprint': this.$scope.currentMedia,
+      'fingerprint': title,
       'hashtags': this.$scope.hashtags,
-      'timestamp': timestamp
+      'timestamp': timestamp,
+      'meta' : this.currentMedia
     });
     this.closeDialog();
     this.$mdToast.show(
@@ -82,38 +87,43 @@ export class recordMomentDialogController {
   }
 
   public processBeatgridData(data) {
-      if(! this.beatgridSyncIsStarted){
-        var whenBeatgridIsStartedOutputTest = /Fingerprint store prepared/;
-        if(whenBeatgridIsStartedOutputTest.test(data)){
-            this.beatgridSyncIsStarted = true;
-        }
-        return;
+    if(! this.beatgridSyncIsStarted){
+      var whenBeatgridIsStartedOutputTest = /Fingerprint store prepared/;
+      if(whenBeatgridIsStartedOutputTest.test(data)){
+          this.beatgridSyncIsStarted = true;
       }
-      this.beatgridHistoryStack.push(data);
-
-      this.currentMedia = recordMomentDialogController.getMetaData(data);
-      if(! this.mediaFound){
-        this.Spotify.search(this.currentMedia.song, 'track').then((results) => {
-          console.log('results',results);
-          var imageList = _.first(_.pluck(_.pluck(results.tracks.items, 'album'), 'images'));
-          console.log('in promis',imageList);
-          var image = (imageList != undefined) ? _.first(imageList): false;
-          if(image){
-            this.currentMedia.cover = image.url;
-            return image.url;
-          }
-        });
-
-      }
-
-      this.$scope.$apply();
-      this.mediaFound = true;
+      return;
     }
+    this.beatgridHistoryStack.push(data);
+    this.currentMedia = recordMomentDialogController.getMetaData(data);
+
+    if(! this.mediaFound || this.currentMedia.song != this.latestSong){
+      this.searchForSpotifyAlbumCover(this.currentMedia.song);
+    }
+
+    this.latestSong = this.currentMedia.song;
+    this.mediaFound = true;
+    this.$scope.$apply();
+  }
 
 
   public closeDialog(){
     this.$mdDialog.cancel();
   }
+
+ public searchForSpotifyAlbumCover(song){
+
+   return this.Spotify.search(song, 'track').then((results) => {
+     console.log('results',results);
+     var imageList = _.first(_.pluck(_.pluck(results.tracks.items, 'album'), 'images'));
+     console.log('in promis',imageList);
+     var image = (imageList != undefined) ? _.first(imageList): false;
+     if(image){
+       this.currentMedia.cover = image.url;
+       return image.url;
+     }
+   });
+ }
 
   public recordUserMedia(){
     var client = new BinaryClient('ws://192.168.178.20:9001');

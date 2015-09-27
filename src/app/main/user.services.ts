@@ -27,7 +27,7 @@ export function UserServices($firebaseObject, $firebaseAuth, user){
   };
 
   this.userIsLoggedIn = function(){
-    return this.authData;
+    return (this.authData);
   };
 
   this.get = (userId)=> {
