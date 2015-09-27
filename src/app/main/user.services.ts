@@ -5,7 +5,6 @@ export function UserServices($firebaseObject, $firebaseAuth, user){
   var emomentsRef = ref.child('emoments');
   this.authObj = $firebaseAuth(ref);
 
-
   var user = this.authenticate = function() {
     return this.authObj.$authWithOAuthPopup('twitter').then((authData) => {
       this.twitter = authData.twitter;
@@ -15,11 +14,11 @@ export function UserServices($firebaseObject, $firebaseAuth, user){
         "displayName": this.twitter.displayName,
         "profilePicture": this.twitter.profileImageURL,
         "settings": {
-          "notifications": true,
-          "autocapture": false
+          "Notifications": true,
+          "Autocapture on startup": false
         }
       };
-      usersRef.child(this.twitter.username).set(user)
+      usersRef.child(this.twitter.username).set(user);
       return user;
 
     }).catch(function(error) {
@@ -43,8 +42,8 @@ export function UserServices($firebaseObject, $firebaseAuth, user){
     ref.unauth();
   }
 
-  this.getUserSettings = function () {
-    return this.get(this.twitter.username).child('settings');
+  this.userSettings = function() {
+    return $firebaseObject((user).child('settings'));
   }
 
   return {
