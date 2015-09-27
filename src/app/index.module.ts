@@ -24,7 +24,7 @@ module emoment {
     .constant('FIREBASE_URL', 'https://emoment.firebaseio.com/')
     .config(config)
     .config(routerConfig)
-    .service('userServices', ['$firebaseAuth', UserServices])
+    .service('userServices', ['$firebaseAuth', '$firebaseObject', UserServices])
     .run(runBlock)
     .config(function($mdThemingProvider) {
       $mdThemingProvider.theme('default')

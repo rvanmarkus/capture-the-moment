@@ -1,10 +1,9 @@
 /** @ngInject */
-export function UserServices($firebaseAuth, user){
+export function UserServices($firebaseAuth, $firebaseObject, user){
   var ref = new Firebase('https://emoment.firebaseio.com');
   var usersRef = ref.child('users');
   var emomentsRef = ref.child('emoments');
   this.authObj = $firebaseAuth(ref);
-
 
   var user = this.authenticate = function() {
     return this.authObj.$authWithOAuthPopup('twitter').then((authData) => {
@@ -15,11 +14,11 @@ export function UserServices($firebaseAuth, user){
         "displayName": this.twitter.displayName,
         "profilePicture": this.twitter.profileImageURL,
         "settings": {
-          "notifications": true,
-          "autocapture": false
+          "Notifications": true,
+          "Autocapture on startup": false
         }
       };
-      usersRef.child(this.twitter.username).set(user)
+      usersRef.child(this.twitter.username).set(user);
       return user;
 
     }).catch(function(error) {
@@ -37,7 +36,7 @@ export function UserServices($firebaseAuth, user){
   };
 
   this.get = (userId)=> {
-    return $firebase(ref.child('users').child(userId)).$asObject();
+    return $firebaseObject(ref.child('users').child(userId));
   };
 
   this.getUser = function(){
@@ -48,8 +47,8 @@ export function UserServices($firebaseAuth, user){
     ref.unauth();
   }
 
-  this.getUserSettings = function () {
-    return this.get(this.twitter.username).child('settings');
+  this.userSettings = function() {
+    return $firebaseObject((user).child('settings'));
   }
 
   return {
@@ -63,6 +62,8 @@ export function UserServices($firebaseAuth, user){
     authObj : this.authObj,
     usersRef: usersRef,
     get: this.get,
-    emomentsRef: emomentsRef
+    emomentsRef: emomentsRef,
+    userSettings: this.userSettings
+
   }
 }

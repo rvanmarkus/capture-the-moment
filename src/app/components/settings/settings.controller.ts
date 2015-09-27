@@ -15,8 +15,8 @@ export class SettingsController {
     this.$scope = $scope;
     this.$log = $log;
     this.user = userServices.getUser();
-    console.log(this.user.settings);
-    $scope.settings = this.user.settings;
+    this.userSettings = userServices.userSettings();
+    console.log(this.userSettings);
 
     
     $scope.showTermsAndConditions = function($event) {
@@ -31,10 +31,10 @@ export class SettingsController {
           .targetEvent($event)
       );
     };
-    $scope.showSimpleToast = function(obj) {
-      console.log("first- " + obj.name + " : ", obj.state);
+    $scope.onChange = function(key, value) {
+      console.log(key + " : " value);
       $mdToast.show(
-        $mdToast.simple().content(obj.name + " is now set as " + obj.state).hideDelay(1500)
+        $mdToast.simple().content(key + " is now set as " + value).hideDelay(1500)
       );
     };
 
