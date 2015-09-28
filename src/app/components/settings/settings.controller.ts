@@ -9,16 +9,18 @@ export class SettingsController {
 
 
   /** @ngInject */
-  constructor($scope: ng.IScope, $timeout: ng.ITimeoutService, $log: ng.ILogService, $mdToast: any, $mdDialog: ng.material.IDialogService, userServices, $firebaseAuth) {
+  constructor($scope: ng.IScope, $timeout: ng.ITimeoutService, $log: ng.ILogService, $mdToast: any, $mdDialog: ng.material.IDialogService, userServices, $firebaseAuth, $firebaseObject) {
     this.userServices = userServices;
     this.$mdToast = $mdToast;
     this.$scope = $scope;
     this.$log = $log;
     this.user = userServices.getUser();
-    this.userSettings = userServices.userSettings();
-    console.log(this.userSettings);
-
-    
+    $scope.userSettings = userServices.syncUserSettings();
+    console.log('userSettings: ' + $scope.userSettings);
+    $scope.userSettings.$bindTo($scope, 'settingsObj').then(function() {
+      console.log('settingsObj should be bound: ' + $scope.settingsObj);
+      console.log($scope.settingsObj);
+    });
     $scope.showTermsAndConditions = function($event) {
       $mdDialog.show(
         $mdDialog.alert()
@@ -31,6 +33,7 @@ export class SettingsController {
           .targetEvent($event)
       );
     };
+
     $scope.onChange = function(key, value) {
       console.log(key + " : " value);
       $mdToast.show(
@@ -45,12 +48,11 @@ export class SettingsController {
     $scope.reportError = function() {
       console.log('button for report error clicked')
     }
-    
-
   }
 
   logout() {
     this.$mdToast.show(this.$mdToast.simple().content('HIHIHIH').hideDelay(2500));
     this.userServices.ref.unauth();
   }
+
 }

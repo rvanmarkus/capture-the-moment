@@ -1,9 +1,10 @@
 /** @ngInject */
-export function UserServices($firebaseObject, $firebaseAuth, user){
+export function UserServices($firebaseObject, $firebaseAuth, $firebaseArray, user){
   var ref = new Firebase('https://emoment.firebaseio.com');
   var usersRef = ref.child('users');
   var emomentsRef = ref.child('emoments');
   this.authObj = $firebaseAuth(ref);
+  this.$firebaseObject = $firebaseObject;
 
   var user = this.authenticate = function() {
     return this.authObj.$authWithOAuthPopup('twitter').then((authData) => {
@@ -26,6 +27,19 @@ export function UserServices($firebaseObject, $firebaseAuth, user){
     });
   };
 
+  this.syncUserSettings = function() {
+      console.log('variable user.username is set to ' + this.twitter.username);
+      // create a reference to the database where we will store our data
+      var userRef = usersRef.child(this.twitter.username);
+      console.log('userRef: '+ userRef);
+      var settingsRef = userRef.child('settings');
+      console.log('settingsRef: ' + settingsRef);
+      var settingsObj = $firebaseObject(settingsRef);
+      console.log('settingsObj: ' + settingsObj);
+      // return it as a synchronized object
+      return settingsObj;
+  };
+
   this.userIsLoggedIn = function(){
     return (this.authData);
   };
@@ -40,11 +54,12 @@ export function UserServices($firebaseObject, $firebaseAuth, user){
 
   this.logout = function() {
     ref.unauth();
-  }
+  };
 
   this.userSettings = function() {
-    return $firebaseObject((user).child('settings'));
-  }
+    //return $firebaseObject(usersRef.child(this.twitter.username).child('settings'));
+    return user.settings;
+  };
 
   return {
     authenticate: this.authenticate,
@@ -58,6 +73,7 @@ export function UserServices($firebaseObject, $firebaseAuth, user){
     usersRef: usersRef,
     get: this.get,
     emomentsRef: emomentsRef,
-    getUserSettings: this.getUserSettings
+    userSettings: this.userSettings,
+    syncUserSettings: this.syncUserSettings
   }
 }

@@ -1,7 +1,7 @@
 <md-content layout-fill flex>
   <md-list>
     <md-subheader>General</md-subheader>
-    <md-list-item ng-repeat="(key, value) in settings.settings">
+    <md-list-item ng-repeat="(key, value) in settingsObj">
       <p>{{key}}</p>
       <md-switch aria-label="{{key}}" ng-model="value" ng-change="onChange(key, value)"></md-switch>
     </md-list-item>  
