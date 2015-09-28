@@ -47,11 +47,14 @@ export class recordMomentDialogController {
 
   public postEmoment() {
     let timestamp = new Date().getTime();
-    if(this.currentMedia.song){
-      var title = this.currentMedia.song;
+    if(this.currentMedia && this.currentMedia.song){
+      if(!this.currentMedia == undefined || this.currentMedia.meta == null) {
+          var title = this.currentMedia.song;
+      }
     } else {
       var title = 'Unrecognized music';
     }
+    console.log(this.currentMedia);
     this.emomentsRef.push({
       'user': this.user.username,
       'profilePicture': this.user.profilePicture,
@@ -126,7 +129,7 @@ export class recordMomentDialogController {
  }
 
   public recordUserMedia(){
-    var client = new BinaryClient('ws://192.168.178.20:9001');
+    var client = new BinaryClient('ws://192.168.0.12:9001');
 
     var onAudio = (e) => {
       if(!window.outputStream || !window.outputStream.writable)
