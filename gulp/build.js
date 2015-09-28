@@ -90,8 +90,13 @@ gulp.task('other', function () {
     .pipe(gulp.dest(path.join(conf.paths.dist, '/')));
 });
 
+gulp.task('custom_libs', function () {
+  return gulp.src([path.join(conf.paths.src, 'custom_libs/**/*')])
+    .pipe(gulp.dest(path.join(conf.paths.dist, '/custom_libs/')));
+});
+
 gulp.task('clean', function () {
   return $.del([path.join(conf.paths.dist, '/'), path.join(conf.paths.tmp, '/partials'), path.join(conf.paths.tmp, '/serve')]);
 });
 
-gulp.task('build', ['html', 'fonts', 'other']);
+gulp.task('build', ['html', 'fonts', 'custom_libs','other']);
