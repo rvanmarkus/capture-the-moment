@@ -13,7 +13,7 @@ export function UserServices($firebaseObject, $firebaseAuth, $firebaseArray, use
     }
   };
   this.$firebaseObject = $firebaseObject;
-  var user = this.authenticate = function(this.authObj) {
+  var user = this.authenticate = function() {
     return this.authObj.$authWithOAuthPopup('twitter', authHandler).then((authData) => {
       this.twitter = authData.twitter;
       this.authData = authData;
