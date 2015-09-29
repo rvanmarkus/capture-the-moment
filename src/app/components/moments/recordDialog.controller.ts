@@ -129,7 +129,7 @@ export class recordMomentDialogController {
  }
 
   public recordUserMedia(){
-    var client = new BinaryClient('ws://192.168.178.20:9001');
+    var client = new BinaryClient('ws://stream.emoment.apps.tijgerbloed.nl');
 
     var onAudio = (e) => {
       if(!window.outputStream || !window.outputStream.writable)
