@@ -6,11 +6,13 @@ export class LoginController {
   private location;
   public loadingIndicator;
 
-  constructor($scope, userServices, $location, $mdToast: any){
+  constructor($scope, userServices, $location, $mdToast: any, $firebaseAuth){
     this.location = $location;
     this.userServices = userServices;
     this.$mdToast = $mdToast;
     this.loadingIndicator = false;
+    this.$firebaseAuth = $firebaseAuth;
+    console.log(userServices.userIsLoggedIn());
   }
 
   loginSuccessfull() {
@@ -19,7 +21,6 @@ export class LoginController {
       this.loadingIndicator = false;
       this.location.path('/');
   }
-
 
   authenticate() {
     this.loadingIndicator = true;

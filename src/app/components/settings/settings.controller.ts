@@ -42,19 +42,18 @@ export class SettingsController {
     };
 
     $scope.deleteHistory = function() {
-      console.log('delete history clicked')
+      console.log('delete history clicked');
     };
 
     $scope.reportError = function() {
-      console.log('button for report error clicked')
+      console.log('button for report error clicked');
     };
 
     $scope.logout = function() {
       $mdToast.show(
-          $mdToast.simple().content('HIHIHIH').hideDelay(2500)
+          $mdToast.simple().content('Logging out').hideDelay(2500)
       );
-      userServices.logout();
-
+      userServices.ref.unauth();
     };
   }
 
