@@ -4,6 +4,5 @@ coverage/
 .sass-cache/
 .idea/
 .tmp/
-dist/
 *.js
 output.wav
