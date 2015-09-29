@@ -11,7 +11,7 @@
             <img ng-src="{{post.profilePicture}}" class="md-avatar" alt="{{post.username}}" />
             <div class="md-list-item-text" layout="column">
               <h3>{{post.fingerprint}}</h3>
-              <h4><b>{{post.hashtags}}</b></h4>
+              <span ng-repeat="tag in post.hashtags">{{tag}}</span>
               <p>{{post.timestamp | timeAgo}}</p>
               <!--<md-chips readonly="true" ng-model="post.hashtags">-->
                 <!--<md-chip-template>-->
@@ -32,13 +32,14 @@
             <img ng-src="{{post.profilePicture}}" class="md-avatar" alt="{{post.username}}" />
             <div class="md-list-item-text" layout="column">
               <h3>{{post.fingerprint}}</h3>
-              <!--<h4><b>{{post.hashtags}}</b></h4>-->
-              <span ng-bind="post.user"></span><span ng-bind="post.timestamp | timeAgo"></span>
-              <md-chips readonly="true" ng-model="post.hashtags">
-                <md-chip-template>
-                  {{$chip}}
-                </md-chip-template>
-              </md-chips>
+              <span ng-repeat="tag in post.hashtags">{{tag}}</span>
+              <span ng-bind="post.user"></span>
+              <span ng-bind="post.timestamp | timeAgo"></span>
+              <!--<md-chips readonly="true" ng-model="post.hashtags">-->
+                <!--<md-chip-template>-->
+                  <!--{{$chip}}-->
+                <!--</md-chip-template>-->
+              <!--</md-chips>-->
             </div>
           </md-list-item>
         </md-list>

@@ -20,6 +20,7 @@ export class LoginController {
       this.location.path('/');
   }
 
+
   authenticate() {
     this.loadingIndicator = true;
     this.userServices.authenticate().then((user)=>{

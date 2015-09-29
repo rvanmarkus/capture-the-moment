@@ -47,12 +47,15 @@ export class SettingsController {
 
     $scope.reportError = function() {
       console.log('button for report error clicked')
-    }
-  }
+    };
 
-  logout() {
-    this.$mdToast.show(this.$mdToast.simple().content('HIHIHIH').hideDelay(2500));
-    this.userServices.ref.unauth();
+    $scope.logout = function() {
+      $mdToast.show(
+          $mdToast.simple().content('HIHIHIH').hideDelay(2500)
+      );
+      userServices.logout();
+
+    };
   }
 
 }
