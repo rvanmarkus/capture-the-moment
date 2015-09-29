@@ -3,7 +3,7 @@
     <md-subheader>General</md-subheader>
     <md-list-item ng-repeat="(key, value) in settingsObj">
       <p>{{key}}</p>
-      <md-switch aria-label="{{key}}" ng-model="value" ng-change="onChange(key, value)"></md-switch>
+      <md-switch aria-label="{{key}}" ng-model="settingsObj[key]" ng-change="onChange(key, value)"></md-switch>
     </md-list-item>  
 
     <md-subheader>Account</md-subheader>
