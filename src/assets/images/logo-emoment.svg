@@ -1,45 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 18.1.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <svg version="1.1" id="eMoment" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 width="510.3px" height="510px" viewBox="0 0 510.3 510" enable-background="new 0 0 510.3 510" xml:space="preserve">
+	 viewBox="-505 803.1 497.6 444.9" style="enable-background:new -505 803.1 497.6 444.9;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#BCBEBD;}
+	.st1{opacity:0.5;fill:#E5E6E5;enable-background:new    ;}
+	.st2{fill:rgb(244,67,54);}
+	.st3{fill:#7F8080;}
+</style>
 <g>
-	<path id="leftside" fill="#BCBEBD" d="M38.6,108.6C18.5,144.5,7,185.9,7,230c0,113.3,75.8,208.9,179.4,238.9l69.5-87.3L83.6,165.2
-		l-28.5-35.8L38.6,108.6z"/>
-	<path id="rightside" fill="#BCBEBD" d="M255.9,381.7l69.4,87.2C428.9,438.8,504.6,343.3,504.6,230c0-44-11.5-85.3-31.5-121.2
-		L255.9,381.7z"/>
-	<circle id="circle-2" opacity="0.5" fill="#E5E6E5" cx="255.9" cy="215.5" r="182.4"/>
-	<path id="cicle1" fill="#F2302C" d="M329.2,215.5c0,40.5-32.8,73.3-73.3,73.3c-40.5,0-73.3-32.8-73.3-73.3
-		c0-40.5,32.8-73.3,73.3-73.3C296.4,142.2,329.2,175,329.2,215.5z"/>
-	<path id="plane" fill="#7F8080" d="M186.5,468.1c22,6.4,45.3,9.9,69.4,9.9c24.1,0,47.4-3.5,69.5-9.9l-69.4-87.2L186.5,468.1z"/>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
+	<path id="leftside" class="st0" d="M-473.4,878.6c-20.1,35.9-31.6,77.3-31.6,121.4c0,113.3,75.8,208.9,179.4,238.9l69.5-87.3
+		l-172.3-216.4l-28.5-35.8L-473.4,878.6z"/>
+	<path id="rightside" class="st0" d="M-256.1,1151.7l69.4,87.2C-83.1,1208.8-7.4,1113.3-7.4,1000c0-44-11.5-85.3-31.5-121.2
+		L-256.1,1151.7z"/>
+	<circle id="circle-2" class="st1" cx="-256.1" cy="985.5" r="182.4"/>
+	<path id="cicle1" class="st2" d="M-182.8,985.5c0,40.5-32.8,73.3-73.3,73.3s-73.3-32.8-73.3-73.3c0-40.5,32.8-73.3,73.3-73.3
+		S-182.8,945-182.8,985.5z"/>
+	<path id="plane" class="st3" d="M-325.5,1238.1c22,6.4,45.3,9.9,69.4,9.9s47.4-3.5,69.5-9.9l-69.4-87.2L-325.5,1238.1z"/>
 </g>
 </svg>
