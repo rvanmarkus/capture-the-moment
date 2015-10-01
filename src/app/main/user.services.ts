@@ -36,11 +36,11 @@ export function UserServices($firebaseObject, $firebaseAuth, $firebaseArray, use
           "Autocapture on startup": false
         }
       };
-      user = authData.twitter;
-      user.settings = {
-          "Notifications": false,
-          "Autocapture on startup": false
-      };
+      //user = authData.twitter;
+      //user.settings = {
+      //    "Notifications": false,
+      //    "Autocapture on startup": false
+      //};
 
       return user;
     }).catch(function (error) {
