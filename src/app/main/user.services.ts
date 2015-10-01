@@ -4,17 +4,9 @@ export function UserServices($firebaseObject, $firebaseAuth, $firebaseArray, use
   var usersRef = ref.child('users');
   var emomentsRef = ref.child('emoments');
   this.authObj = $firebaseAuth(ref);
-  function authHandler(authData) {
-    if (authData) {
-      console.log("User " + authData.uid + " is logged in with " + authData.provider);
-      console.log(authData);
-    } else {
-      console.log("User is logged out");
-    }
-  };
   this.$firebaseObject = $firebaseObject;
   var user = this.authenticate = function() {
-    return this.authObj.$authWithOAuthPopup('twitter', authHandler).then((authData) => {
+    return this.authObj.$authWithOAuthPopup('twitter').then((authData) => {
       this.twitter = authData.twitter;
       this.authData = authData;
       usersRef.child(this.twitter.username).once('value', function(snapshot) {
@@ -36,28 +28,12 @@ export function UserServices($firebaseObject, $firebaseAuth, $firebaseArray, use
           "Autocapture on startup": false
         }
       };
-      //user = authData.twitter;
-      //user.settings = {
-      //    "Notifications": false,
-      //    "Autocapture on startup": false
-      //};
-
       return user;
     }).catch(function (error) {
       console.log("Authentication failed: ", error);
     });
   };
 
-  //this.userAuthenticate = function(){
-  //  ref.authWithOAuthPopup("twitter", function(error, authData) {
-  //    if (error) {
-  //      console.log("Login Failed!", error);
-  //    } else {
-  //      console.log("Authenticated successfully with payload:", authData);
-  //    }
-  //  });
-  //};
-  //
   this.syncUserSettings = function() {
     console.log('variable user.username is set to ' + this.twitter.username);
     // create a reference to the database where we will store our data
@@ -67,6 +43,7 @@ export function UserServices($firebaseObject, $firebaseAuth, $firebaseArray, use
     console.log('settingsRef: ' + settingsRef);
     var settingsObj = $firebaseObject(settingsRef);
     console.log('settingsObj: ' + settingsObj);
+    // return it as a synchronized object
     return settingsObj;
   };
 
@@ -82,15 +59,17 @@ export function UserServices($firebaseObject, $firebaseAuth, $firebaseArray, use
     return user;
   };
 
-  this.logout = function(ref) {
+  this.logout = function() {
     console.log('logout is clicked');
     return ref.unauth();
   };
 
+  this.userSettings = function() {
+    //return $firebaseObject(usersRef.child(this.twitter.username).child('settings'));
+    return user.settings;
+  };
+
   return {
-    userAuthenticate: this.userAuthenticate,
-    authHandler: authHandler,
-    authData: this.authData,
     authenticate: this.authenticate,
     getUser: this.getUser,
     logout: this.logout,
@@ -102,6 +81,7 @@ export function UserServices($firebaseObject, $firebaseAuth, $firebaseArray, use
     usersRef: usersRef,
     get: this.get,
     emomentsRef: emomentsRef,
+    userSettings: this.userSettings,
     syncUserSettings: this.syncUserSettings
   }
 }
