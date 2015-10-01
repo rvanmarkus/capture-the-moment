@@ -6,7 +6,7 @@ export class LoginController {
   private location;
   public loadingIndicator;
 
-  constructor($scope, userServices, $location, $mdToast: any){
+  constructor($scope, userServices, $location, $mdToast: any, webDevTec: WebDevTecService){
     this.location = $location;
     this.userServices = userServices;
     this.$mdToast = $mdToast;
@@ -19,7 +19,6 @@ export class LoginController {
       this.loadingIndicator = false;
       this.location.path('/');
   }
-
 
   authenticate() {
     this.loadingIndicator = true;

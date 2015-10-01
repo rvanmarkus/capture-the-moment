@@ -21,4 +21,21 @@ export function convertFloat32ToInt16(buffer) {
   }
   return buf.buffer;
 }
+
+export function keyPressHandler() {
+  console.log('neeneeneee');
+
+  $(document).keypress(function(e) {
+    console.log("This key was pressed: " + e.keyCode + ", charcode: " + e.charCode);
+    console.log($('md-toolbar'));
+    console.log
+    if (e.keyCode == 27) { //
+      console.log('okasdsasdfasdf');
+    }
+    else {
+      console.log('rwrsd')
+    }
+  });
+}
+
 //./match -d /Users/XebiaLeenlaptop/beatgrid/bla.car --match-first -s match.first.suppress_updates=false -v

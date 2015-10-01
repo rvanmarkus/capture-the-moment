@@ -10,7 +10,7 @@ import { WebDevTecService } from '../app/components/webDevTec/webDevTec.service'
 import { acmeNavbar } from '../app/components/navbar/navbar.directive';
 import { emSidebar } from '../app/components/sidebar/sidebar.directive';
 import { SettingsController } from '../app/components/settings/settings.controller';
-import { AudioContextService, UserMediaProvider, convertFloat32ToInt16 } from './main/util.services';
+import { AudioContextService, UserMediaProvider, convertFloat32ToInt16, keyPressHandler } from './main/util.services';
 import { UserServices } from './main/user.services';
 import { MomentsFactory } from './main/moments.factory.ts';
 import { recordMomentDialogController } from '../app/components/moments/recordDialog.controller'
@@ -35,6 +35,7 @@ module emoment {
     .factory('audioContext', AudioContextService)
     .factory('userMediaProvider', ['$window',UserMediaProvider])
     .service('webDevTec', WebDevTecService)
+    .service('keyPressHandler', keyPressHandler)
     .controller('RecordDialogController', recordMomentDialogController)
     .controller('MainController', Moments.MainController)
     .controller('SettingsController', SettingsController)

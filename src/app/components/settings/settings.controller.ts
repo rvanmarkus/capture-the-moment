@@ -35,7 +35,7 @@ export class SettingsController {
     };
 
     $scope.onChange = function(key, value) {
-      console.log(key + " : " value);
+      console.log(key + " : " + value);
       $mdToast.show(
         $mdToast.simple().content(key + " is now set as " + value).hideDelay(1500)
       );

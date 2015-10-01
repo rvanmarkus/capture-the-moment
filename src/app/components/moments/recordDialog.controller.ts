@@ -24,8 +24,6 @@ export class recordMomentDialogController {
   private $filter : ng.IFilterService;
   private currentMedia;
 
-
-
   constructor($scope:recordDialogScope, $mdDialog:ng.material.IDialogService, userMediaProvider, audioContext, $timeout, $firebaseAuth, $mdToast: any, userServices, Spotify, $filter:ng.IFilterService){
     this.$mdToast = $mdToast;
     this.audioContext = audioContext;
@@ -63,14 +61,79 @@ export class recordMomentDialogController {
       'timestamp': timestamp,
       'meta' : this.currentMedia
     });
+
+    let title;
+    const timestamp = new Date().getTime();
+    console.log('this.currentMedia: ', this.currentMedia);
+
+    try {
+      if(!this.currentMedia === undefined){
+        console.log('this.currentMedia: ', this.currentMedia);
+        if(!this.currentMedia === undefined || this.currentMedia.meta === null) {
+          title = this.currentMedia.song;
+        }
+        this.emomentsRef.push({
+          'user': this.user.username,
+          'profilePicture': this.user.profilePicture,
+          'fingerprint': title,
+          'hashtags': this.$scope.hashtags,
+          'timestamp': timestamp,
+          'meta' : this.currentMedia
+        });
+      } else {
+        title = 'Unrecognized music';
+        console.log('Unrecognized.');
+        this.closeDialog();
+        this.$mdToast.show(
+          this.$mdToast.simple().content('No audio recognised!').hideDelay(2500)
+        );
+      }
+    }
+
+    let title;
+    const timestamp = new Date().getTime();
+    console.log('this.currentMedia: ', this.currentMedia);
+
+    try {
+      if(!this.currentMedia === undefined){
+        console.log('this.currentMedia: ', this.currentMedia);
+        if(!this.currentMedia === undefined || this.currentMedia.meta === null) {
+          title = this.currentMedia.song;
+        }
+        this.emomentsRef.push({
+          'user': this.user.username,
+          'profilePicture': this.user.profilePicture,
+          'fingerprint': title,
+          'hashtags': this.$scope.hashtags,
+          'timestamp': timestamp,
+          'meta' : this.currentMedia
+        });
+      } else {
+        title = 'Unrecognized music';
+        console.log('Unrecognized.');
+        this.closeDialog();
+        this.$mdToast.show(
+          this.$mdToast.simple().content('No audio recognised!').hideDelay(2500)
+        );
+      }
+    }
+
+     catch (error){
+       console.log('error');
+     }
+
+    //console.log('this.currentMedia: ', this.currentMedia);
+    //if(this.currentMedia === undefined) {
+    //  console.log('this.currentMedia === undefined');
+    //}
+
     this.closeDialog();
     this.$mdToast.show(
       this.$mdToast.simple().content('Emoment successfully posted!').hideDelay(2500)
     );
   }
 
-  static getMetaData(yoMama = '1443295586, 5, test/Qtier - Set Me On (David August Remix).cas, 111440'){
-
+  public getMetaData(yoMama = '1443295586, 5, test/Qtier - Set Me On (David August Remix).cas, 111440'){
     yoMama.split(',');
     // GET IT?!
     const meh = [];
@@ -79,14 +142,14 @@ export class recordMomentDialogController {
       meh.push(hellNawh[i].trim());
     }
 
+    //return {
+    //  'timestamp': meh[0],
+    //  'timeAgo': meh[1],
+    //  'song': meh[2].split('.cas')[0].split('test/')[1],
+    //  'tijdstip': msToTime(meh[3])
+    //};
 
-    return {
-      'timestamp': meh[0],
-      'timeAgo': meh[1],
-      'song': meh[2].split('.cas')[0].split('test/')[1],
-      'tijdstip': msToTime(meh[3])
-    };
-
+    return 'I LIKE CHEESE';
   }
 
   public processBeatgridData(data) {
@@ -108,7 +171,6 @@ export class recordMomentDialogController {
     this.mediaFound = true;
     this.$scope.$apply();
   }
-
 
   public closeDialog(){
     this.$mdDialog.cancel();

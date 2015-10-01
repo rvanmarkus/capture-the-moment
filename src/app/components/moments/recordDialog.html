@@ -10,7 +10,7 @@
       <div layout="row" layout-align="center center">
         <md-progress-circular ng-if="! create.mediaFound" md-mode="indeterminate"></md-progress-circular>
       </div>
-      <p ng-if="! create.mediaFound">We're in our time machine searching for you moment...</p>
+      <p ng-if="! create.mediaFound">We're in our time machine searching for your moment...</p>
       <strong ng-if="create.mediaFound">We found this in our database:</strong>
       <md-list-item class="md-3-line" ng-if="create.mediaFound">
         <img ng-src="{{create.currentMedia.cover}}" class="md-avatar"/>
