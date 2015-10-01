@@ -118,6 +118,34 @@ export class recordMomentDialogController {
       }
     }
 
+    let title;
+    const timestamp = new Date().getTime();
+    console.log('this.currentMedia: ', this.currentMedia);
+
+    try {
+      if(!this.currentMedia === undefined){
+        console.log('this.currentMedia: ', this.currentMedia);
+        if(!this.currentMedia === undefined || this.currentMedia.meta === null) {
+          title = this.currentMedia.song;
+        }
+        this.emomentsRef.push({
+          'user': this.user.username,
+          'profilePicture': this.user.profilePicture,
+          'fingerprint': title,
+          'hashtags': this.$scope.hashtags,
+          'timestamp': timestamp,
+          'meta' : this.currentMedia
+        });
+      } else {
+        title = 'Unrecognized music';
+        console.log('Unrecognized.');
+        this.closeDialog();
+        this.$mdToast.show(
+          this.$mdToast.simple().content('No audio recognised!').hideDelay(2500)
+        );
+      }
+    }
+
      catch (error){
        console.log('error');
      }
