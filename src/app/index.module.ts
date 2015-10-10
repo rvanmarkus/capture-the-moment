@@ -22,6 +22,7 @@ module emoment {
   angular.module('emoment', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ngMessages', 'ngAria', 'ui.router', 'ngMaterial', 'firebase','yaru22.angular-timeago','spotify'])
     .constant('moment', moment)
     .constant('FIREBASE_URL', 'https://emoment.firebaseio.com/')
+    .constant('BEATGRID_STREAMING_SERVER','ws://localhost:9001')
     .config(config)
     .config(routerConfig)
     .service('userServices', ['$firebaseObject', '$firebaseAuth', UserServices])

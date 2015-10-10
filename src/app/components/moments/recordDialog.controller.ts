@@ -26,7 +26,7 @@ export class recordMomentDialogController {
 
 
 
-  constructor($scope:recordDialogScope, $mdDialog:ng.material.IDialogService, userMediaProvider, audioContext, $timeout, $firebaseAuth, $mdToast: any, userServices, Spotify, $filter:ng.IFilterService){
+  constructor($scope:recordDialogScope, $mdDialog:ng.material.IDialogService, userMediaProvider, audioContext, $timeout, $firebaseAuth, $mdToast: any, userServices, Spotify, $filter:ng.IFilterService, private BEATGRID_STREAMING_SERVER){
     this.$mdToast = $mdToast;
     this.audioContext = audioContext;
     this.getUserMediaProvider = userMediaProvider;
@@ -129,7 +129,7 @@ export class recordMomentDialogController {
  }
 
   public recordUserMedia(){
-    var client = new BinaryClient('ws://stream.emoment.apps.tijgerbloed.nl');
+    var client = new BinaryClient(this.BEATGRID_STREAMING_SERVER);
 
     var onAudio = (e) => {
       if(!window.outputStream || !window.outputStream.writable)

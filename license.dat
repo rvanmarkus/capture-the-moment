@@ -1,4 +1,5 @@
-_secure_keys=license.client,license.server
-_secure_signature=fd4226d2dbd1a21f9c4fca231d3a9837d0fe2731
-license.client=IBC
-license.server=http://license.beatgridmedia.com
+_secure_keys=license.id
+_secure_signature=5d8c936a839282ceed1f287742f67b4e0a833703
+license.id=a5959d69d025ef365c46906177b2afe7
+license.server=http://remoting.beatgridmedia.com/license
+license.agreement=I accept

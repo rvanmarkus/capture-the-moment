@@ -15,7 +15,7 @@ export namespace Moments {
     public twitter;
 
     /** @ngInject */
-    constructor ($scope:MainScope, $timeout: ng.ITimeoutService, webDevTec: WebDevTecService, $mdUtil: any, $mdSidenav: angular.material.ISidenavService, $log: ng.ILogService, $mdDialog: ng.material.IDialogService, userServices)  {
+    constructor ($scope:MainScope, $timeout: ng.ITimeoutService, webDevTec: WebDevTecService, $mdUtil: any, $mdSidenav: angular.material.ISidenavService, $log: ng.ILogService, $mdDialog: ng.material.IDialogService, userServices, $templateCache:angular.ITemplateCacheService)  {
       this.awesomeThings = new Array();
       this.webDevTec = webDevTec;
       this.classAnimation = '';
@@ -31,7 +31,7 @@ export namespace Moments {
       $scope.showRecordDialog = function($event) {
         $mdDialog.show({
           targetEvent: $event,
-          templateUrl:'/app/components/moments/recordDialog.html',
+          templateUrl: 'app/components/moments/recordDialog.html',
           controller: 'RecordDialogController',
           controllerAs: 'create',
           bindToController: true
