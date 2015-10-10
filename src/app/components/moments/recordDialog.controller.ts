@@ -17,7 +17,7 @@ export class recordMomentDialogController {
   private emomentsRef;
   private beatgridSyncIsStarted;
   private beatgridHistoryStack;
-  private mediaFound;
+  public mediaFound;
   private Spotify;
   public latestSong;
   private fitler;
@@ -83,15 +83,16 @@ export class recordMomentDialogController {
     return {
       'timestamp': meh[0],
       'timeAgo': meh[1],
-      'song': meh[2].split('.cas')[0].split('test/')[1],
+      'song': meh[2].split('.mp3')[0].split('example-music/')[1],
       'tijdstip': msToTime(meh[3])
     };
 
   }
 
   public processBeatgridData(data) {
+    console.log(this.beatgridSyncIsStarted);
     if(! this.beatgridSyncIsStarted){
-      var whenBeatgridIsStartedOutputTest = /Fingerprint store prepared/;
+      var whenBeatgridIsStartedOutputTest = /Matching audio stream/;
       if(whenBeatgridIsStartedOutputTest.test(data)){
           this.beatgridSyncIsStarted = true;
       }
@@ -99,8 +100,8 @@ export class recordMomentDialogController {
     }
     this.beatgridHistoryStack.push(data);
     this.currentMedia = recordMomentDialogController.getMetaData(data);
-
-    if(! this.mediaFound || this.currentMedia.song != this.latestSong){
+    console.log(this.currentMedia);
+    if(this.currentMedia.song != this.latestSong){
       this.searchForSpotifyAlbumCover(this.currentMedia.song);
     }
 
