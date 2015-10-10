@@ -3,8 +3,8 @@
     <md-subheader>General</md-subheader>
     <md-list-item ng-repeat="(key, value) in settingsObj">
       <p>{{key}}</p>
-      <md-switch aria-label="{{key}}" ng-model="value" ng-change="onChange(key, value)"></md-switch>
-    </md-list-item>  
+      <md-switch aria-label="{{key}}" ng-model="settingsObj[key]" ng-change="onChange(key, value)"></md-switch>
+    </md-list-item>
 
     <md-subheader>Account</md-subheader>
     <md-list-item ng-click="deleteHistory()">
@@ -27,7 +27,6 @@
       <p>Version</p>
       <small>beta 0.1</small>
     </md-list-item>
-
 
   </md-list>
 </md-content>
